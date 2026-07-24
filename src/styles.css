@@ -151,6 +151,23 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@keyframes emergency-ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.emergency-ticker {
+  animation: emergency-ticker-scroll 18s linear infinite;
+}
+
+.emergency-ticker:hover {
+  animation-play-state: paused;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
