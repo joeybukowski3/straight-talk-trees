@@ -1,23 +1,20 @@
 import { Phone } from "lucide-react";
 import { ContactForm } from "./ContactForm";
 import { PHONE_DISPLAY, PHONE_HREF } from "./data";
-import { TREE_MARK_PATH } from "./TreeMark";
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-[color:var(--forest)] text-[color:var(--forest-foreground)]">
-      <div className="absolute inset-0 opacity-[0.08]" aria-hidden="true">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="tree-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
-              <g transform="translate(6 6)">
-                <path d={TREE_MARK_PATH} fill="currentColor" />
-              </g>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#tree-pattern)" />
-        </svg>
-      </div>
+      <img
+        src="/houston-tree-hero.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
+      <div
+        className="absolute inset-0 bg-[color:var(--forest)]/75"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.14em] text-[color:var(--amber-cta)]">
