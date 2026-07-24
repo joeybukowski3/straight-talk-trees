@@ -9,10 +9,10 @@ export function Hero() {
         src="/houston-tree-hero.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-[center_65%] lg:object-contain lg:object-bottom"
       />
       <div
-        className="absolute inset-0 bg-[color:var(--forest)]/75"
+        className="absolute inset-0 bg-[color:var(--forest)]/72"
         aria-hidden="true"
       />
       <div className="relative mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
