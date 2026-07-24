@@ -1,22 +1,9 @@
 import { WHY_POINTS } from "./data";
-import { TREE_MARK_PATH } from "./TreeMark";
 
 export function WhyBukowski() {
   return (
-    <section id="why" className="relative overflow-hidden bg-[color:var(--sage)]/60">
-      <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="why-tree-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
-              <g transform="translate(6 6)">
-                <path d={TREE_MARK_PATH} fill="currentColor" />
-              </g>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#why-tree-pattern)" />
-        </svg>
-      </div>
-      <div className="relative mx-auto max-w-[1200px] px-4 py-16 sm:py-20">
+    <section id="why" className="bg-[color:var(--sage)]/60">
+      <div className="mx-auto max-w-[1200px] px-4 py-16 sm:py-20">
         <h2 className="max-w-3xl font-display text-3xl font-semibold tracking-tight text-[color:var(--forest)] sm:text-4xl">
           Tree Work Without the Runaround
         </h2>
