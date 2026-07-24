@@ -13,7 +13,7 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-[color:var(--border)] bg-[color:var(--cream)]/95 backdrop-blur supports-[backdrop-filter]:bg-[color:var(--cream)]/80">
+    <header className="sticky top-0 z-40 border-b border-[color:var(--border)] bg-[color:var(--cream)]/95 backdrop-blur">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-3">
         <a href="#top" className="flex items-center gap-2">
           <TreeMark className="h-7 w-7 text-[color:var(--forest)]" />
@@ -23,11 +23,7 @@ export function Header() {
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           {NAV.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="text-sm text-[color:var(--foreground)] hover:text-[color:var(--forest)]"
-            >
+            <a key={n.href} href={n.href} className="text-sm text-[color:var(--foreground)] hover:text-[color:var(--forest)]">
               {n.label}
             </a>
           ))}
@@ -57,11 +53,7 @@ export function Header() {
           <ul className="mx-auto max-w-[1200px] px-4 py-2">
             {NAV.map((n) => (
               <li key={n.href}>
-                <a
-                  href={n.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-base text-[color:var(--foreground)]"
-                >
+                <a href={n.href} onClick={() => setOpen(false)} className="block py-3 text-base text-[color:var(--foreground)]">
                   {n.label}
                 </a>
               </li>
@@ -76,10 +68,7 @@ export function Header() {
 function TreeMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M16 2c4 3 7 6 7 10a7 7 0 0 1-5 6.7V22h3a1 1 0 0 1 0 2h-3v5a1 1 0 0 1-2 0v-5h-3a1 1 0 0 1 0-2h3v-3.3A7 7 0 0 1 9 12c0-4 3-7 7-10Z"
-      />
+      <path fill="currentColor" d="M16 2c4 3 7 6 7 10a7 7 0 0 1-5 6.7V22h3a1 1 0 0 1 0 2h-3v5a1 1 0 0 1-2 0v-5h-3a1 1 0 0 1 0-2h3v-3.3A7 7 0 0 1 9 12c0-4 3-7 7-10Z" />
     </svg>
   );
 }
