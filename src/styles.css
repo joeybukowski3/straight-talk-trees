@@ -161,7 +161,7 @@
 }
 
 .emergency-ticker {
-  animation: emergency-ticker-scroll 18s linear infinite;
+  animation: emergency-ticker-scroll 48s linear infinite;
 }
 
 .emergency-ticker:hover {
