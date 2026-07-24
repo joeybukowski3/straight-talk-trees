@@ -1,24 +1,23 @@
 import { Phone } from "lucide-react";
 import { ContactForm } from "./ContactForm";
 import { PHONE_DISPLAY, PHONE_HREF } from "./data";
+import { TREE_MARK_PATH } from "./TreeMark";
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-[color:var(--forest)] text-[color:var(--forest-foreground)]">
-      <img
-        src="/houston-tree-hero.png"
-        alt=""
-        aria-hidden="true"
-        width={1916}
-        height={821}
-        decoding="async"
-        fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover object-center [image-rendering:auto]"
-      />
-      <div
-        className="absolute inset-0 bg-[color:var(--forest)]/70"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 opacity-[0.08]" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hero-tree-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
+              <g transform="translate(6 6)">
+                <path d={TREE_MARK_PATH} fill="currentColor" />
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-tree-pattern)" />
+        </svg>
+      </div>
       <div className="relative mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.14em] text-[color:var(--amber-cta)]">
