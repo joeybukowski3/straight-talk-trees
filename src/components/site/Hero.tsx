@@ -6,10 +6,14 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-[color:var(--forest)] text-[color:var(--forest-foreground)]">
       <img
-        src="/houston-tree-hero.jpg"
+        src="/houston-tree-hero.png"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        width={1916}
+        height={821}
+        decoding="async"
+        fetchPriority="high"
+        className="absolute inset-0 h-full w-full object-cover object-center [image-rendering:auto]"
       />
       <div
         className="absolute inset-0 bg-[color:var(--forest)]/70"
