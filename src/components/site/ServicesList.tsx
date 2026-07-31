@@ -8,8 +8,8 @@ export function ServicesList() {
           Additional Tree Services
         </h2>
         <p className="mt-4 max-w-3xl text-[color:var(--foreground)]/80 sm:text-lg">
-          Supporting services can be recommended on their own or included with a larger tree-removal or cleanup
-          project.
+          Supporting services can be recommended on their own or included with a larger tree-removal
+          or cleanup project.
         </p>
         <ul className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
           {SUPPORTING_SERVICES.map((service) => (

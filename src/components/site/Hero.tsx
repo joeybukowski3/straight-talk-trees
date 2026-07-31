@@ -13,12 +13,7 @@ export function Hero() {
       <div className="absolute inset-0 opacity-[0.08]" aria-hidden="true">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern
-              id="hero-tree-pattern"
-              width="44"
-              height="44"
-              patternUnits="userSpaceOnUse"
-            >
+            <pattern id="hero-tree-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
               <g transform="translate(6 6)">
                 <path d={TREE_MARK_PATH} fill="currentColor" />
               </g>
@@ -36,12 +31,12 @@ export function Hero() {
             {SITE.tagline}
           </h1>
           <p className="mt-5 max-w-xl text-base text-[color:var(--forest-foreground)]/88 sm:text-lg">
-            Tree removal, dangerous branch and limb removal, storm cleanup, and trimming for homes and
-            commercial properties across {SITE.region}.
+            Tree removal, dangerous branch and limb removal, storm cleanup, and trimming for homes
+            and commercial properties across {SITE.region}.
           </p>
           <p className="mt-4 max-w-xl text-sm text-[color:var(--forest-foreground)]/75">
-            For a fallen tree, hanging limb, blocked access, or another urgent condition, call directly. For
-            nonurgent work, use the consultation form.
+            For a fallen tree, hanging limb, blocked access, or another urgent condition, call
+            directly. For nonurgent work, use the consultation form.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a

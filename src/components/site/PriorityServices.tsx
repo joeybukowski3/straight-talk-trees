@@ -10,8 +10,8 @@ export function PriorityServices() {
           Tree Removal and Urgent Tree Service
         </h2>
         <p className="mt-4 max-w-3xl text-base text-[color:var(--muted-foreground)] sm:text-lg">
-          Start with the condition affecting your property. Recommendations and pricing may depend on access,
-          tree condition, safety requirements, and an onsite evaluation.
+          Start with the condition affecting your property. Recommendations and pricing may depend
+          on access, tree condition, safety requirements, and an onsite evaluation.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {PRIMARY_SERVICES.map((service) => (

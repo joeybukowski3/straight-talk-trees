@@ -100,8 +100,8 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
         Request a Free Consultation
       </h2>
       <p id={`${formId}-helper`} className="mt-1 text-sm text-[color:var(--muted-foreground)]">
-        Tell us what you see and where the property is located. All fields are required. For an urgent
-        condition, call{" "}
+        Tell us what you see and where the property is located. All fields are required. For an
+        urgent condition, call{" "}
         <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">
           {SITE.phoneDisplay}
         </a>
@@ -233,7 +233,8 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
             role="status"
             className="mt-4 rounded-md border border-[color:var(--forest)]/30 bg-[color:var(--sage)] px-3 py-2 text-sm text-[color:var(--forest)]"
           >
-            Your request was received. The company can follow up using the contact information provided. Call{" "}
+            Your request was received. The company can follow up using the contact information
+            provided. Call{" "}
             <a href={SITE.phoneHref} className="font-semibold underline">
               {SITE.phoneDisplay}
             </a>{" "}

@@ -10,12 +10,13 @@ export function ServiceArea() {
           Serving Houston and Southeast Texas
         </h2>
         <p className="mt-4 max-w-3xl text-[color:var(--foreground)]/85 sm:text-lg">
-          Bukowski Tree Company provides residential and commercial tree services across Houston and Southeast
-          Texas. Availability depends on the specific property location and current scheduling.
+          Bukowski Tree Company provides residential and commercial tree services across Houston and
+          Southeast Texas. Availability depends on the specific property location and current
+          scheduling.
         </p>
         <p className="mt-3 max-w-3xl text-[color:var(--foreground)]/85">
-          Customers outside the immediate area are welcome to call to confirm coverage. You can also enter a ZIP
-          code or general location in the consultation form.
+          Customers outside the immediate area are welcome to call to confirm coverage. You can also
+          enter a ZIP code or general location in the consultation form.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
