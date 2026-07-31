@@ -19,9 +19,7 @@ export function FAQ() {
                   +
                 </span>
               </summary>
-              <p className="max-w-3xl pb-5 pr-8 text-[color:var(--foreground)]/80">
-                {item.answer}
-              </p>
+              <p className="max-w-3xl pb-5 pr-8 text-[color:var(--foreground)]/80">{item.answer}</p>
             </details>
           ))}
         </div>

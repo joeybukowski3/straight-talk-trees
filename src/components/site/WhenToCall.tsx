@@ -14,9 +14,8 @@ export function WhenToCall() {
             When to Call a Tree-Service Professional
           </h2>
           <p className="mt-4 text-[color:var(--foreground)]/85">
-            Visible damage does not confirm a tree’s condition, but these signs
-            may require professional evaluation. Stay clear of unstable areas
-            and call immediately for an urgent or dangerous condition.
+            Visible damage does not confirm a tree’s condition, but these signs may require professional
+            evaluation. Stay clear of unstable areas and call immediately for an urgent or dangerous condition.
           </p>
           <a
             href={SITE.phoneHref}

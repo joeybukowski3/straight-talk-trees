@@ -35,8 +35,8 @@ export function Process() {
           What Happens After You Contact Us
         </h2>
         <p className="mt-4 max-w-3xl text-[color:var(--foreground)]/80 sm:text-lg">
-          Final recommendations and pricing can depend on property access, tree
-          condition, safety requirements, and an onsite evaluation.
+          Final recommendations and pricing can depend on property access, tree condition, safety requirements,
+          and an onsite evaluation.
         </p>
         <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((step, index) => (
@@ -47,9 +47,7 @@ export function Process() {
               <h3 className="mt-1 font-display text-lg font-semibold text-[color:var(--forest)]">
                 {step.title}
               </h3>
-              <p className="mt-2 text-[color:var(--foreground)]/85">
-                {step.body}
-              </p>
+              <p className="mt-2 text-[color:var(--foreground)]/85">{step.body}</p>
             </li>
           ))}
         </ol>

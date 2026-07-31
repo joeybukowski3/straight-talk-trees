@@ -20,11 +20,7 @@ type FieldProps = {
   inputMode?: "email" | "numeric" | "search" | "tel" | "text" | "url";
 };
 
-export function ContactForm({
-  variant = "hero",
-}: {
-  variant?: "hero" | "section";
-}) {
+export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section" }) {
   const submit = useServerFn(submitContact);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -45,8 +41,7 @@ export function ContactForm({
       location: String(formData.get("location") || "").trim(),
       description: String(formData.get("description") || "").trim(),
       website: String(formData.get("website") || "").trim(),
-      sourcePath:
-        typeof window === "undefined" ? "/" : window.location.pathname,
+      sourcePath: typeof window === "undefined" ? "/" : window.location.pathname,
     };
 
     const nextErrors: Record<string, string> = {};
@@ -101,39 +96,22 @@ export function ContactForm({
       aria-labelledby={`${formId}-title`}
       aria-describedby={`${formId}-helper`}
     >
-      <h2
-        id={`${formId}-title`}
-        className="text-xl font-semibold text-[color:var(--forest)]"
-      >
+      <h2 id={`${formId}-title`} className="text-xl font-semibold text-[color:var(--forest)]">
         Request a Free Consultation
       </h2>
-      <p
-        id={`${formId}-helper`}
-        className="mt-1 text-sm text-[color:var(--muted-foreground)]"
-      >
-        Tell us what you see and where the property is located. All fields are
-        required. For an urgent condition, call{" "}
-        <a
-          href={SITE.phoneHref}
-          className="font-semibold text-[color:var(--forest)] underline"
-        >
+      <p id={`${formId}-helper`} className="mt-1 text-sm text-[color:var(--muted-foreground)]">
+        Tell us what you see and where the property is located. All fields are required. For an urgent
+        condition, call{" "}
+        <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">
           {SITE.phoneDisplay}
         </a>
         .
       </p>
 
-      <div
-        className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
-        aria-hidden="true"
-      >
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         <label>
           Website
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-          />
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
 
@@ -212,8 +190,7 @@ export function ContactForm({
             id={`${formId}-description-help`}
             className="mt-1 text-xs text-[color:var(--muted-foreground)]"
           >
-            Include what is damaged, leaning, hanging, fallen, overgrown, or
-            affecting access.
+            Include what is damaged, leaning, hanging, fallen, overgrown, or affecting access.
           </p>
           <textarea
             id={`${formId}-description`}
@@ -225,9 +202,7 @@ export function ContactForm({
             aria-invalid={Boolean(errors.description)}
             aria-describedby={[
               `${formId}-description-help`,
-              errors.description
-                ? `${formId}-description-error`
-                : undefined,
+              errors.description ? `${formId}-description-error` : undefined,
             ]
               .filter(Boolean)
               .join(" ")}
@@ -249,9 +224,7 @@ export function ContactForm({
         disabled={status === "submitting"}
         className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-[color:var(--amber-cta)] px-4 py-3 text-sm font-semibold text-[color:var(--amber-cta-foreground)] shadow-sm hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
-        {status === "submitting"
-          ? "Sending request…"
-          : "Send Consultation Request"}
+        {status === "submitting" ? "Sending request…" : "Send Consultation Request"}
       </button>
 
       <div aria-live="polite" aria-atomic="true">
@@ -260,8 +233,7 @@ export function ContactForm({
             role="status"
             className="mt-4 rounded-md border border-[color:var(--forest)]/30 bg-[color:var(--sage)] px-3 py-2 text-sm text-[color:var(--forest)]"
           >
-            Your request was received. The company can follow up using the
-            contact information provided. Call{" "}
+            Your request was received. The company can follow up using the contact information provided. Call{" "}
             <a href={SITE.phoneHref} className="font-semibold underline">
               {SITE.phoneDisplay}
             </a>{" "}
@@ -273,8 +245,7 @@ export function ContactForm({
             role="alert"
             className="mt-4 rounded-md border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2 text-sm text-[color:var(--destructive)]"
           >
-            The request could not be sent. Review the highlighted fields or
-            call{" "}
+            The request could not be sent. Review the highlighted fields or call{" "}
             <a href={SITE.phoneHref} className="font-semibold underline">
               {SITE.phoneDisplay}
             </a>
@@ -304,10 +275,7 @@ function Field({
 
   return (
     <div className={className}>
-      <label
-        htmlFor={inputId}
-        className="block text-sm font-medium text-[color:var(--foreground)]"
-      >
+      <label htmlFor={inputId} className="block text-sm font-medium text-[color:var(--foreground)]">
         {label}
       </label>
       <input
@@ -324,10 +292,7 @@ function Field({
         className="mt-1 min-h-11 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30"
       />
       {error && (
-        <p
-          id={errorId}
-          className="mt-1 text-xs text-[color:var(--destructive)]"
-        >
+        <p id={errorId} className="mt-1 text-xs text-[color:var(--destructive)]">
           {error}
         </p>
       )}
@@ -355,10 +320,7 @@ function SelectField({
 
   return (
     <div>
-      <label
-        htmlFor={inputId}
-        className="block text-sm font-medium text-[color:var(--foreground)]"
-      >
+      <label htmlFor={inputId} className="block text-sm font-medium text-[color:var(--foreground)]">
         {label}
       </label>
       <select
@@ -380,10 +342,7 @@ function SelectField({
         ))}
       </select>
       {error && (
-        <p
-          id={errorId}
-          className="mt-1 text-xs text-[color:var(--destructive)]"
-        >
+        <p id={errorId} className="mt-1 text-xs text-[color:var(--destructive)]">
           {error}
         </p>
       )}

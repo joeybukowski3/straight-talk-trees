@@ -10,9 +10,8 @@ export function FinalCTA() {
           Ready to Discuss the Tree Concern?
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-[color:var(--forest-foreground)]/85 sm:text-lg">
-          Call for an urgent or dangerous condition. For planned or nonurgent
-          work, send a free consultation request with the property location and
-          a brief description.
+          Call for an urgent or dangerous condition. For planned or nonurgent work, send a free
+          consultation request with the property location and a brief description.
         </p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
           <a
