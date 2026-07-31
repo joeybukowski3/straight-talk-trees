@@ -1,25 +1,53 @@
-import { PHONE_DISPLAY } from "./data";
+import { SITE } from "@/lib/site-config";
 
 const STEPS = [
-  { title: "Call or Send a Request", body: `Call ${PHONE_DISPLAY} or submit the consultation form with a short description of the tree or branch issue.` },
-  { title: "Get a Clear Recommendation", body: "Jake Bukowski or a member of the team will review the situation and explain the recommended service." },
-  { title: "Schedule the Work", body: "Choose a practical service time and receive clear communication about the next steps." },
-  { title: "Complete the Job", body: "The agreed work is completed with attention to safety, surrounding property, and cleanup." },
-];
+  {
+    title: "Contact the company",
+    body: `Call ${SITE.phoneDisplay} for urgent work or send a consultation request for a nonurgent project.`,
+  },
+  {
+    title: "Describe the concern",
+    body: "Share the property location, what you can see, the service you may need, and how urgent the condition appears.",
+  },
+  {
+    title: "Schedule an evaluation",
+    body: "An onsite evaluation or consultation may be arranged when access, tree condition, or safety requirements need review.",
+  },
+  {
+    title: "Review scope and pricing",
+    body: "Receive a straightforward recommendation describing the proposed work and pricing before scheduling.",
+  },
+  {
+    title: "Schedule the work",
+    body: "Choose an available service time after the scope, access needs, and other project details are agreed.",
+  },
+  {
+    title: "Complete agreed cleanup",
+    body: "The work and cleanup included in the agreed scope are completed with attention to the surrounding property.",
+  },
+] as const;
 
 export function Process() {
   return (
-    <section className="bg-white">
+    <section id="process" className="bg-white">
       <div className="mx-auto max-w-[1200px] px-4 py-16 sm:py-20">
         <h2 className="font-display text-3xl font-semibold tracking-tight text-[color:var(--forest)] sm:text-4xl">
-          A Simple, Straightforward Process
+          What Happens After You Contact Us
         </h2>
-        <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((s, i) => (
-            <li key={s.title}>
-              <div className="text-sm font-semibold text-[color:var(--amber-cta)]">Step {i + 1}</div>
-              <h3 className="mt-1 font-display text-lg font-semibold text-[color:var(--forest)]">{s.title}</h3>
-              <p className="mt-2 text-[color:var(--foreground)]/85">{s.body}</p>
+        <p className="mt-4 max-w-3xl text-[color:var(--foreground)]/80 sm:text-lg">
+          Final recommendations and pricing can depend on property access, tree condition, safety
+          requirements, and an onsite evaluation.
+        </p>
+        <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {STEPS.map((step, index) => (
+            <li key={step.title}>
+              <div className="text-sm font-semibold text-[color:var(--amber-cta)]">
+                Step {index + 1}
+              </div>
+              <h3 className="mt-1 font-display text-lg font-semibold text-[color:var(--forest)]">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-[color:var(--foreground)]/85">{step.body}</p>
             </li>
           ))}
         </ol>
