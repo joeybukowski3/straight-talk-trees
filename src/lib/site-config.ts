@@ -11,13 +11,12 @@ export const SITE = {
     "Tree removal, dangerous branch removal, trimming, storm cleanup, and emergency calls for Houston and Southeast Texas.",
   region: "Houston and Southeast Texas",
   socialImagePath: "/houston-tree-hero.jpg",
-  socialImageAlt:
-    "Bukowski Tree Company tree service in Houston and Southeast Texas",
+  socialImageAlt: "Bukowski Tree Company tree service in Houston and Southeast Texas",
 } as const;
 
 export const SITE_URL = new URL(SITE.url);
 
-export function absoluteUrl(path = "/") {
+export function absoluteUrl(path: string = "/") {
   return new URL(path, SITE_URL).toString();
 }
 
