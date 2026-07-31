@@ -13,58 +13,58 @@ import { ServiceArea } from "@/components/site/ServiceArea";
 import { About } from "@/components/site/About";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { Footer } from "@/components/site/Footer";
+import { SITE, SERVICES, absoluteUrl } from "@/lib/site-config";
 
-const TITLE =
-  "Bukowski Tree Company — Houston Tree Removal & Emergency Tree Service";
-const DESC =
-  "Professional tree removal, dangerous branch removal, trimming, storm cleanup, and 24/7 emergency tree service throughout Houston and Southeast Texas. Insured. Free consultations. Call 979-824-8240.";
+const TITLE = "Bukowski Tree Company | Houston Tree Service";
+const DESCRIPTION =
+  "Tree removal, dangerous branch removal, trimming, storm cleanup, and emergency calls throughout Houston and Southeast Texas.";
 
 const LOCAL_BUSINESS_JSONLD = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Bukowski Tree Company",
-  description: DESC,
-  telephone: "+1-979-824-8240",
-  areaServed: "Houston and Southeast Texas",
-  founder: { "@type": "Person", name: "Jake Bukowski" },
-  makesOffer: [
-    "Tree removal",
-    "Hazardous tree removal",
-    "Branch and limb removal",
-    "Fallen-tree removal",
-    "Tree trimming and pruning",
-    "Storm-damage cleanup",
-    "Emergency tree service",
-    "Stump grinding",
-    "Brush and debris removal",
-    "Lot and land clearing",
-    "Roof and structure clearance",
-    "Residential tree service",
-    "Commercial tree service",
-    "Tree-condition and safety consultations",
-  ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  "@id": `${SITE.url}/#business`,
+  name: SITE.businessName,
+  url: SITE.url,
+  telephone: SITE.phoneE164,
+  description: DESCRIPTION,
+  founder: { "@type": "Person", name: SITE.ownerName },
+  areaServed: [
+    { "@type": "City", name: "Houston" },
+    { "@type": "AdministrativeArea", name: "Southeast Texas" },
+  ],
+  image: absoluteUrl(SITE.socialImagePath),
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: SITE.phoneE164,
+    contactType: "customer service",
+    areaServed: "US-TX",
+  },
+  makesOffer: SERVICES.map((name) => ({
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name, areaServed: SITE.region },
+  })),
 };
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
-      { name: "description", content: DESC },
+      { name: "description", content: DESCRIPTION },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: SITE.url },
+      { property: "og:site_name", content: SITE.businessName },
+      { property: "og:image", content: absoluteUrl(SITE.socialImagePath) },
+      { property: "og:image:alt", content: SITE.socialImageAlt },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESC },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: absoluteUrl(SITE.socialImagePath) },
     ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(LOCAL_BUSINESS_JSONLD),
-      },
-    ],
+    links: [{ rel: "canonical", href: SITE.url }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(LOCAL_BUSINESS_JSONLD) }],
   }),
   component: Index,
 });
