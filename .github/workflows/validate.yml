@@ -40,7 +40,7 @@ jobs:
           src/routes/privacy.tsx
           src/routes/terms.tsx
           --rule 'prettier/prettier: off'
+      - name: Build and generate routes
+        run: npm run build
       - name: TypeScript
         run: npm run typecheck
-      - name: Build
-        run: npm run build
