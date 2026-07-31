@@ -1,9 +1,22 @@
 import { useId, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { submitContact } from "@/lib/contact.functions";
-import { PHONE_DISPLAY, PHONE_HREF, SERVICE_OPTIONS, URGENCY_OPTIONS } from "./data";
+import { trackConversion } from "@/lib/analytics";
+import { SITE } from "@/lib/site-config";
+import { SERVICE_OPTIONS, URGENCY_OPTIONS } from "./data";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+type FieldProps = {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  autoComplete?: string;
+  error?: string;
+  className?: string;
+  maxLength?: number;
+};
 
 export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section" }) {
   const submit = useServerFn(submitContact);
@@ -11,20 +24,22 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
   const [errors, setErrors] = useState<Record<string, string>>({});
   const formId = useId();
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     if (status === "submitting") return;
-    const form = e.currentTarget;
-    const fd = new FormData(form);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const data = {
-      name: String(fd.get("name") || "").trim(),
-      phone: String(fd.get("phone") || "").trim(),
-      email: String(fd.get("email") || "").trim(),
-      service: String(fd.get("service") || "").trim(),
-      urgency: String(fd.get("urgency") || "").trim(),
-      location: String(fd.get("location") || "").trim(),
-      description: String(fd.get("description") || "").trim(),
-      website: String(fd.get("website") || ""),
+      name: String(formData.get("name") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      service: String(formData.get("service") || "").trim(),
+      urgency: String(formData.get("urgency") || "").trim(),
+      location: String(formData.get("location") || "").trim(),
+      description: String(formData.get("description") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
+      sourcePath: typeof window === "undefined" ? "/" : window.location.pathname,
     };
 
     const nextErrors: Record<string, string> = {};
@@ -33,110 +48,91 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
     if (!/^\S+@\S+\.\S+$/.test(data.email)) nextErrors.email = "Please enter a valid email.";
     if (!data.service) nextErrors.service = "Please choose a service.";
     if (!data.urgency) nextErrors.urgency = "Please choose urgency.";
-    if (!data.location) nextErrors.location = "Please enter your ZIP or area.";
+    if (!data.location) nextErrors.location = "Please enter your ZIP code or area.";
     if (!data.description) nextErrors.description = "Please describe the work.";
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length) return;
+
+    if (Object.keys(nextErrors).length) {
+      setStatus("error");
+      trackConversion("contact_form_failure");
+      return;
+    }
 
     setStatus("submitting");
+    trackConversion("contact_form_attempt");
     try {
       await submit({ data });
       setStatus("success");
+      setErrors({});
       form.reset();
+      trackConversion("contact_form_success");
     } catch {
       setStatus("error");
+      trackConversion("contact_form_failure");
     }
   }
 
-  const wrap =
-    variant === "hero"
-      ? "relative rounded-lg border border-[color:var(--border)] bg-white p-5 sm:p-6 shadow-sm text-[color:var(--foreground)]"
-      : "relative rounded-lg border border-[color:var(--border)] bg-white p-5 sm:p-6 text-[color:var(--foreground)]";
+  const wrap = variant === "hero"
+    ? "relative rounded-lg border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] shadow-sm sm:p-6"
+    : "relative rounded-lg border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] sm:p-6";
 
   return (
-    <form onSubmit={handleSubmit} noValidate className={wrap} aria-labelledby={`${formId}-title`}>
-      <h3 id={`${formId}-title`} className="text-xl font-semibold text-[color:var(--forest)]">
-        Request a Free Consultation
-      </h3>
-      <p className="mt-1 text-sm text-[color:var(--muted-foreground)]">
-        For immediate or dangerous conditions, call{" "}
-        <a href={PHONE_HREF} className="font-semibold text-[color:var(--forest)] underline">
-          {PHONE_DISPLAY}
-        </a>
-        .
+    <form onSubmit={handleSubmit} noValidate className={wrap} aria-labelledby={`${formId}-title`} aria-describedby={`${formId}-required`}>
+      <h2 id={`${formId}-title`} className="text-xl font-semibold text-[color:var(--forest)]">Request a Free Consultation</h2>
+      <p id={`${formId}-required`} className="mt-1 text-sm text-[color:var(--muted-foreground)]">
+        All fields are required. For immediate or dangerous conditions, call{" "}
+        <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">{SITE.phoneDisplay}</a>.
       </p>
 
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label>
-          Website
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-        </label>
+        <label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <Field label="Name" name="name" error={errors.name} autoComplete="name" required />
-        <Field label="Phone number" name="phone" type="tel" error={errors.phone} autoComplete="tel" required />
-        <Field label="Email" name="email" type="email" error={errors.email} autoComplete="email" required className="sm:col-span-2" />
-        <SelectField label="Service needed" name="service" options={SERVICE_OPTIONS} error={errors.service} required />
-        <SelectField label="Is this urgent?" name="urgency" options={URGENCY_OPTIONS} error={errors.urgency} required />
-        <Field label="ZIP code or general location" name="location" error={errors.location} autoComplete="postal-code" required className="sm:col-span-2" />
+        <Field formId={formId} label="Name" name="name" error={errors.name} autoComplete="name" required maxLength={120} />
+        <Field formId={formId} label="Phone number" name="phone" type="tel" error={errors.phone} autoComplete="tel" required maxLength={40} />
+        <Field formId={formId} label="Email" name="email" type="email" error={errors.email} autoComplete="email" required className="sm:col-span-2" maxLength={200} />
+        <SelectField formId={formId} label="Service needed" name="service" options={SERVICE_OPTIONS} error={errors.service} required />
+        <SelectField formId={formId} label="Is this urgent?" name="urgency" options={URGENCY_OPTIONS} error={errors.urgency} required />
+        <Field formId={formId} label="ZIP code or general location" name="location" error={errors.location} autoComplete="postal-code" required className="sm:col-span-2" maxLength={120} />
         <div className="sm:col-span-2">
-          <label className="block text-sm font-medium text-[color:var(--foreground)]">
-            Brief description of the work
-            <textarea name="description" rows={4} required className="mt-1 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30" />
-          </label>
-          {errors.description && <p className="mt-1 text-xs text-[color:var(--destructive)]">{errors.description}</p>}
+          <label htmlFor={`${formId}-description`} className="block text-sm font-medium text-[color:var(--foreground)]">Brief description of the work</label>
+          <textarea id={`${formId}-description`} name="description" rows={4} required maxLength={2000} aria-invalid={Boolean(errors.description)} aria-describedby={errors.description ? `${formId}-description-error` : undefined} className="mt-1 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30" />
+          {errors.description && <p id={`${formId}-description-error`} className="mt-1 text-xs text-[color:var(--destructive)]">{errors.description}</p>}
         </div>
       </div>
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="mt-5 inline-flex w-full items-center justify-center rounded-md bg-[color:var(--amber-cta)] px-4 py-3 text-sm font-semibold text-[color:var(--amber-cta-foreground)] shadow-sm hover:brightness-95 disabled:opacity-60 sm:w-auto"
-      >
+      <button type="submit" disabled={status === "submitting"} className="mt-5 inline-flex w-full items-center justify-center rounded-md bg-[color:var(--amber-cta)] px-4 py-3 text-sm font-semibold text-[color:var(--amber-cta-foreground)] shadow-sm hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto">
         {status === "submitting" ? "Sending…" : "Request My Consultation"}
       </button>
 
-      {status === "success" && (
-        <p role="status" className="mt-4 rounded-md border border-[color:var(--forest)]/30 bg-[color:var(--sage)] px-3 py-2 text-sm text-[color:var(--forest)]">
-          Thank you. Your consultation request has been received. For urgent or dangerous tree conditions, call{" "}
-          <a href={PHONE_HREF} className="font-semibold underline">{PHONE_DISPLAY}</a>.
-        </p>
-      )}
-      {status === "error" && (
-        <p role="alert" className="mt-4 rounded-md border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2 text-sm text-[color:var(--destructive)]">
-          We could not send your request. Please call <a href={PHONE_HREF} className="font-semibold underline">{PHONE_DISPLAY}</a> for assistance.
-        </p>
-      )}
+      <div aria-live="polite" aria-atomic="true">
+        {status === "success" && <p role="status" className="mt-4 rounded-md border border-[color:var(--forest)]/30 bg-[color:var(--sage)] px-3 py-2 text-sm text-[color:var(--forest)]">Thank you. Your consultation request has been received. For urgent conditions, call <a href={SITE.phoneHref} className="font-semibold underline">{SITE.phoneDisplay}</a>.</p>}
+        {status === "error" && <p role="alert" className="mt-4 rounded-md border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2 text-sm text-[color:var(--destructive)]">We could not send your request. Review any field errors or call <a href={SITE.phoneHref} className="font-semibold underline">{SITE.phoneDisplay}</a>.</p>}
+      </div>
     </form>
   );
 }
 
-function Field({ label, name, type = "text", required, autoComplete, error, className }: { label: string; name: string; type?: string; required?: boolean; autoComplete?: string; error?: string; className?: string }) {
-  return (
-    <div className={className}>
-      <label className="block text-sm font-medium text-[color:var(--foreground)]">
-        {label}
-        <input name={name} type={type} required={required} autoComplete={autoComplete} className="mt-1 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30" />
-      </label>
-      {error && <p className="mt-1 text-xs text-[color:var(--destructive)]">{error}</p>}
-    </div>
-  );
+function Field({ formId, label, name, type = "text", required, autoComplete, error, className, maxLength }: FieldProps & { formId: string }) {
+  const inputId = `${formId}-${name}`;
+  const errorId = `${inputId}-error`;
+  return <div className={className}>
+    <label htmlFor={inputId} className="block text-sm font-medium text-[color:var(--foreground)]">{label}</label>
+    <input id={inputId} name={name} type={type} required={required} autoComplete={autoComplete} maxLength={maxLength} aria-invalid={Boolean(error)} aria-describedby={error ? errorId : undefined} className="mt-1 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30" />
+    {error && <p id={errorId} className="mt-1 text-xs text-[color:var(--destructive)]">{error}</p>}
+  </div>;
 }
 
-function SelectField({ label, name, options, required, error }: { label: string; name: string; options: string[]; required?: boolean; error?: string }) {
-  return (
-    <div>
-      <label className="block text-sm font-medium text-[color:var(--foreground)]">
-        {label}
-        <select name={name} required={required} defaultValue="" className="mt-1 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30">
-          <option value="" disabled>Select an option</option>
-          {options.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-      {error && <p className="mt-1 text-xs text-[color:var(--destructive)]">{error}</p>}
-    </div>
-  );
+function SelectField({ formId, label, name, options, required, error }: { formId: string; label: string; name: string; options: string[]; required?: boolean; error?: string }) {
+  const inputId = `${formId}-${name}`;
+  const errorId = `${inputId}-error`;
+  return <div>
+    <label htmlFor={inputId} className="block text-sm font-medium text-[color:var(--foreground)]">{label}</label>
+    <select id={inputId} name={name} required={required} defaultValue="" aria-invalid={Boolean(error)} aria-describedby={error ? errorId : undefined} className="mt-1 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30">
+      <option value="" disabled>Select an option</option>
+      {options.map((option) => <option key={option} value={option}>{option}</option>)}
+    </select>
+    {error && <p id={errorId} className="mt-1 text-xs text-[color:var(--destructive)]">{error}</p>}
+  </div>;
 }
