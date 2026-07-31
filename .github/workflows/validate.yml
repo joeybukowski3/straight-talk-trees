@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - feat/launch-readiness-and-seo-foundation
+      - main
 
 permissions:
   contents: read
@@ -15,31 +15,42 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - name: Install dependencies
         run: npm install
-      - name: Full repository lint baseline
+      - name: Collect changed source files
+        id: changed
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git diff --name-only --diff-filter=ACMR \
+              "${{ github.event.pull_request.base.sha }}" \
+              "${{ github.event.pull_request.head.sha }}" \
+              > changed-files.txt
+          else
+            git diff --name-only --diff-filter=ACMR HEAD^ HEAD > changed-files.txt
+          fi
+
+          grep -E '\.(ts|tsx|js|jsx|css|json|md|yml|yaml)$' changed-files.txt \
+            | tr '\n' ' ' > changed-format-files.txt || true
+          grep -E '\.(ts|tsx|js|jsx)$' changed-files.txt \
+            | tr '\n' ' ' > changed-eslint-files.txt || true
+
+          echo "format_files=$(cat changed-format-files.txt)" >> "$GITHUB_OUTPUT"
+          echo "eslint_files=$(cat changed-eslint-files.txt)" >> "$GITHUB_OUTPUT"
+      - name: Changed-file Prettier
+        if: steps.changed.outputs.format_files != ''
+        run: npx prettier --check ${{ steps.changed.outputs.format_files }}
+      - name: Changed-file ESLint
+        if: steps.changed.outputs.eslint_files != ''
+        run: npx eslint ${{ steps.changed.outputs.eslint_files }}
+      - name: Repository lint baseline
         continue-on-error: true
         run: npm run lint
-      - name: Launch code lint
-        run: >-
-          npx eslint
-          src/components/site/ContactForm.tsx
-          src/components/site/EmergencyBar.tsx
-          src/components/site/FinalCTA.tsx
-          src/components/site/Footer.tsx
-          src/components/site/Header.tsx
-          src/components/site/Hero.tsx
-          src/lib/analytics.ts
-          src/lib/contact.functions.ts
-          src/lib/site-config.ts
-          src/routes/__root.tsx
-          src/routes/index.tsx
-          src/routes/privacy.tsx
-          src/routes/terms.tsx
-          --rule 'prettier/prettier: off'
       - name: Build and generate routes
         run: npm run build
       - name: TypeScript
