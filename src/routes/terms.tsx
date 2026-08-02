@@ -70,8 +70,8 @@ function TermsPage() {
                 <a className="font-semibold underline" href={SITE.phoneHref}>
                   {SITE.phoneDisplay}
                 </a>{" "}
-                rather than relying exclusively on the website form. The website is not an
-                emergency dispatch system.
+                rather than relying exclusively on the website form. The website is not an emergency
+                dispatch system.
               </p>
             </section>
             <section>

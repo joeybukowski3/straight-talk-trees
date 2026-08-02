@@ -61,8 +61,8 @@ function PrivacyPage() {
               <h2 className="font-display text-2xl font-semibold">How we use information</h2>
               <p className="mt-2">
                 We use consultation information to review and respond to service inquiries,
-                communicate about requested work, and determine whether an onsite evaluation may
-                be appropriate.
+                communicate about requested work, and determine whether an onsite evaluation may be
+                appropriate.
               </p>
             </section>
             <section>
