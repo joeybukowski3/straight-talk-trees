@@ -2,7 +2,11 @@ import { Phone } from "lucide-react";
 import { SITE } from "@/lib/site-config";
 import { trackConversion } from "@/lib/analytics";
 
-export function MobileActionBar() {
+export function MobileActionBar({
+  consultationHref = "#contact",
+}: {
+  consultationHref?: string;
+}) {
   return (
     <aside
       aria-label="Quick contact actions"
@@ -19,7 +23,7 @@ export function MobileActionBar() {
           Call Now
         </a>
         <a
-          href="#contact"
+          href={consultationHref}
           onClick={() => trackConversion("consultation_mobile_click")}
           className="inline-flex min-h-11 items-center justify-center rounded-md border border-[color:var(--forest)] px-3 py-2 text-center text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
         >
