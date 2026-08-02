@@ -33,7 +33,9 @@ function ContactPage() {
               Tell us what is happening on the property
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
-              For an urgent or dangerous tree condition, call directly. For nonurgent work, use the consultation form and include the property location and a brief description of what you see.
+              For an urgent or dangerous tree condition, call directly. For nonurgent work, use the
+              consultation form and include the property location and a brief description of what
+              you see.
             </p>
             <a
               href={SITE.phoneHref}
@@ -56,10 +58,13 @@ function ContactPage() {
                 <li>Property ZIP code or general location.</li>
                 <li>The type of tree work you may need.</li>
                 <li>Whether the concern is urgent or changing.</li>
-                <li>What is damaged, hanging, fallen, leaning, overgrown, or affecting access.</li>
+                <li>
+                  What is damaged, hanging, fallen, leaning, overgrown, or affecting access.
+                </li>
               </ul>
               <p className="mt-6 leading-7 text-[color:var(--foreground)]/75">
-                Final recommendations and pricing may depend on property access, tree condition, safety requirements, and an onsite evaluation.
+                Final recommendations and pricing may depend on property access, tree condition,
+                safety requirements, and an onsite evaluation.
               </p>
             </div>
             <ContactForm variant="section" />

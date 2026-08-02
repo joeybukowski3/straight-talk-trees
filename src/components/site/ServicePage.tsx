@@ -4,9 +4,9 @@ import { EmergencyBar } from "@/components/site/EmergencyBar";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
-import { SITE } from "@/lib/site-config";
-import type { ServicePageData } from "@/lib/service-pages";
 import { trackConversion } from "@/lib/analytics";
+import type { ServicePageData } from "@/lib/service-pages";
+import { SITE } from "@/lib/site-config";
 
 export function ServicePage({ page }: { page: ServicePageData }) {
   return (
@@ -54,7 +54,10 @@ export function ServicePage({ page }: { page: ServicePageData }) {
               <ul className="mt-6 space-y-4">
                 {page.situations.map((item) => (
                   <li key={item} className="flex gap-3 leading-7">
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[color:var(--amber-cta)]" aria-hidden />
+                    <span
+                      className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[color:var(--amber-cta)]"
+                      aria-hidden
+                    />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -85,7 +88,10 @@ export function ServicePage({ page }: { page: ServicePageData }) {
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {page.considerations.map((item) => (
-                <div key={item} className="rounded-md border border-[color:var(--border)] bg-white p-5 leading-7">
+                <div
+                  key={item}
+                  className="rounded-md border border-[color:var(--border)] bg-white p-5 leading-7"
+                >
                   {item}
                 </div>
               ))}
@@ -118,7 +124,10 @@ export function ServicePage({ page }: { page: ServicePageData }) {
           </div>
         </section>
 
-        <section id="contact" className="border-t border-[color:var(--border)] bg-[color:var(--cream)] scroll-mt-24">
+        <section
+          id="contact"
+          className="border-t border-[color:var(--border)] bg-[color:var(--cream)] scroll-mt-24"
+        >
           <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-14 sm:py-18 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--forest)]">
@@ -128,7 +137,8 @@ export function ServicePage({ page }: { page: ServicePageData }) {
                 Tell us about the property
               </h2>
               <p className="mt-4 max-w-xl leading-7 text-[color:var(--foreground)]/80">
-                Include the property location and what you can see from a safe area. For an urgent or dangerous condition, call directly.
+                Include the property location and what you can see from a safe area. For an urgent
+                or dangerous condition, call directly.
               </p>
             </div>
             <ContactForm variant="section" />

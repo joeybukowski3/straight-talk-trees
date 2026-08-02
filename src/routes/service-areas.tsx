@@ -33,7 +33,9 @@ function ServiceAreasPage() {
               Tree service across Houston and Southeast Texas
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
-              Service availability depends on the property location, the requested work, current scheduling, and access. Call to confirm coverage or include your ZIP code or general location in the consultation form.
+              Service availability depends on the property location, the requested work, current
+              scheduling, and access. Call to confirm coverage or include your ZIP code or general
+              location in the consultation form.
             </p>
             <a
               href={SITE.phoneHref}
@@ -53,7 +55,8 @@ function ServiceAreasPage() {
                 Houston-focused service
               </h2>
               <p className="mt-3 leading-7 text-[color:var(--foreground)]/80">
-                The company is positioned to serve Houston and surrounding Southeast Texas properties rather than claiming statewide coverage.
+                The company is positioned to serve Houston and surrounding Southeast Texas
+                properties rather than claiming statewide coverage.
               </p>
             </div>
             <div className="rounded-md border border-[color:var(--border)] bg-[color:var(--cream)] p-6">
@@ -61,7 +64,8 @@ function ServiceAreasPage() {
                 Property-specific availability
               </h2>
               <p className="mt-3 leading-7 text-[color:var(--foreground)]/80">
-                Distance, access, service type, urgency, and current scheduling can affect whether a job can be accepted at a particular location.
+                Distance, access, service type, urgency, and current scheduling can affect whether a
+                job can be accepted at a particular location.
               </p>
             </div>
             <div className="rounded-md border border-[color:var(--border)] bg-[color:var(--cream)] p-6">
@@ -69,7 +73,8 @@ function ServiceAreasPage() {
                 Not sure if you are covered?
               </h2>
               <p className="mt-3 leading-7 text-[color:var(--foreground)]/80">
-                Call or send the property ZIP code or general location. You do not need to guess whether your address falls within the service area.
+                Call or send the property ZIP code or general location. You do not need to guess
+                whether your address falls within the service area.
               </p>
             </div>
           </div>
@@ -81,12 +86,42 @@ function ServiceAreasPage() {
               Services available within the service area
             </h2>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]" href="/tree-removal">Tree Removal</a>
-              <a className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]" href="/emergency-tree-service">Emergency Tree Service</a>
-              <a className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]" href="/dangerous-branch-removal">Dangerous Branch Removal</a>
-              <a className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]" href="/tree-trimming">Tree Trimming</a>
-              <a className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]" href="/storm-cleanup">Storm Cleanup</a>
-              <a className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]" href="/stump-grinding">Stump Grinding</a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                href="/tree-removal"
+              >
+                Tree Removal
+              </a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                href="/emergency-tree-service"
+              >
+                Emergency Tree Service
+              </a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                href="/dangerous-branch-removal"
+              >
+                Dangerous Branch Removal
+              </a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                href="/tree-trimming"
+              >
+                Tree Trimming
+              </a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                href="/storm-cleanup"
+              >
+                Storm Cleanup
+              </a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                href="/stump-grinding"
+              >
+                Stump Grinding
+              </a>
             </div>
           </div>
         </section>
@@ -98,7 +133,8 @@ function ServiceAreasPage() {
                 Confirm your property location
               </h2>
               <p className="mt-4 max-w-xl leading-7 text-[color:var(--foreground)]/80">
-                Include the ZIP code or general area along with the type of tree work you need. For an urgent condition, call directly.
+                Include the ZIP code or general area along with the type of tree work you need. For
+                an urgent condition, call directly.
               </p>
             </div>
             <ContactForm variant="section" />
