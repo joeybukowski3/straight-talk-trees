@@ -2,11 +2,7 @@ import { Phone } from "lucide-react";
 import { SITE } from "@/lib/site-config";
 import { trackConversion } from "@/lib/analytics";
 
-export function MobileActionBar({
-  consultationHref = "#contact",
-}: {
-  consultationHref?: string;
-}) {
+export function MobileActionBar({ consultationHref = "#contact" }: { consultationHref?: string }) {
   return (
     <aside
       aria-label="Quick contact actions"

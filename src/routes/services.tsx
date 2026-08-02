@@ -52,10 +52,10 @@ function ServicesPage() {
               Tree service for Houston and Southeast Texas properties
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
-              Bukowski Tree Company handles urgent tree concerns, planned removal and trimming, storm
-              cleanup, stump work, and related property tree-service needs. The appropriate scope
-              depends on the visible condition, access, surrounding property, and an onsite review
-              when needed.
+              Bukowski Tree Company handles urgent tree concerns, planned removal and trimming,
+              storm cleanup, stump work, and related property tree-service needs. The appropriate
+              scope depends on the visible condition, access, surrounding property, and an onsite
+              review when needed.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a

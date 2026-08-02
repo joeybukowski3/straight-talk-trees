@@ -41,7 +41,9 @@ function PrivacyPage() {
           <p className="text-sm font-semibold uppercase tracking-wider text-[color:var(--forest)]">
             Legal
           </p>
-          <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight">Privacy Policy</h1>
+          <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight">
+            Privacy Policy
+          </h1>
           <p className="mt-3 text-sm text-[color:var(--muted-foreground)]">
             Effective July 31, 2026
           </p>
@@ -50,9 +52,9 @@ function PrivacyPage() {
             <section>
               <h2 className="font-display text-2xl font-semibold">Information we collect</h2>
               <p className="mt-2">
-                When you request a consultation, the form may collect your name, phone number,
-                email address, requested service, urgency, general location or ZIP code, and a
-                description of the work.
+                When you request a consultation, the form may collect your name, phone number, email
+                address, requested service, urgency, general location or ZIP code, and a description
+                of the work.
               </p>
             </section>
             <section>

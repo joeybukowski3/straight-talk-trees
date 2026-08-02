@@ -42,10 +42,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/emergency-tree-service"
-                  className="hover:text-[color:var(--amber-cta)]"
-                >
+                <Link to="/emergency-tree-service" className="hover:text-[color:var(--amber-cta)]">
                   Emergency Tree Service
                 </Link>
               </li>

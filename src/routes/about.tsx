@@ -44,8 +44,8 @@ function AboutPage() {
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
               {SITE.businessName} is locally owned by {SITE.ownerName} and focused on professional
-              tree service, clear communication, and practical recommendations for properties
-              across {SITE.region}.
+              tree service, clear communication, and practical recommendations for properties across
+              {SITE.region}.
             </p>
           </div>
         </section>
@@ -72,8 +72,8 @@ function AboutPage() {
                 scope, and confirm pricing before work is scheduled.
               </p>
               <p>
-                Online descriptions and photos can help explain a concern, but they do not replace
-                a property-specific evaluation when tree condition, access, or safety requirements
+                Online descriptions and photos can help explain a concern, but they do not replace a
+                property-specific evaluation when tree condition, access, or safety requirements
                 need to be reviewed onsite.
               </p>
             </div>

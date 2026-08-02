@@ -94,8 +94,8 @@ function TermsPage() {
               <h2 className="font-display text-2xl font-semibold">Website content</h2>
               <p className="mt-2">
                 Unless otherwise stated, website text, branding, graphics, and original content
-                belong to Bukowski Tree Company and may not be reproduced for commercial use
-                without permission.
+                belong to Bukowski Tree Company and may not be reproduced for commercial use without
+                permission.
               </p>
             </section>
             <section>
