@@ -12,6 +12,16 @@ import { SITE } from "@/lib/site-config";
 const TITLE = "Contact Bukowski Tree Company | Houston Tree Service";
 const DESCRIPTION =
   "Call Bukowski Tree Company or request a free consultation for tree removal, branch removal, trimming, storm cleanup, and related tree service.";
+const HERO_COPY =
+  "For an urgent or dangerous tree condition, call directly. For nonurgent work, use the consultation form and include the property location and a brief description of what you see.";
+const CONTACT_DETAILS = [
+  "Property ZIP code or general location.",
+  "The type of tree work you may need.",
+  "Whether the concern is urgent or changing.",
+  "What is damaged, hanging, fallen, leaning, overgrown, or affecting access.",
+] as const;
+const FORM_NOTE =
+  "Final recommendations and pricing may depend on property access, tree condition, safety requirements, and an onsite evaluation.";
 
 export const Route = createFileRoute("/contact")({
   head: () => pageHead("/contact", TITLE, DESCRIPTION),
@@ -33,9 +43,7 @@ function ContactPage() {
               Tell us what is happening on the property
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
-              For an urgent or dangerous tree condition, call directly. For nonurgent work, use the
-              consultation form and include the property location and a brief description of what
-              you see.
+              {HERO_COPY}
             </p>
             <a
               href={SITE.phoneHref}
@@ -55,17 +63,11 @@ function ContactPage() {
                 What to include
               </h2>
               <ul className="mt-6 space-y-4 leading-7">
-                <li>Property ZIP code or general location.</li>
-                <li>The type of tree work you may need.</li>
-                <li>Whether the concern is urgent or changing.</li>
-                <li>
-                  What is damaged, hanging, fallen, leaning, overgrown, or affecting access.
-                </li>
+                {CONTACT_DETAILS.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
-              <p className="mt-6 leading-7 text-[color:var(--foreground)]/75">
-                Final recommendations and pricing may depend on property access, tree condition,
-                safety requirements, and an onsite evaluation.
-              </p>
+              <p className="mt-6 leading-7 text-[color:var(--foreground)]/75">{FORM_NOTE}</p>
             </div>
             <ContactForm variant="section" />
           </div>
