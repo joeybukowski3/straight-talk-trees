@@ -2,6 +2,14 @@ import { AlertTriangle, Phone } from "lucide-react";
 import { PRIMARY_SERVICES, SITE } from "@/lib/site-config";
 import { trackConversion } from "@/lib/analytics";
 
+const SERVICE_LINKS: Record<string, string> = {
+  "Tree Removal": "/tree-removal",
+  "Dangerous Branch and Limb Removal": "/dangerous-branch-removal",
+  "Fallen-Tree Removal": "/tree-removal",
+  "Emergency Tree Service": "/emergency-tree-service",
+  "Storm Cleanup": "/storm-cleanup",
+};
+
 export function PriorityServices() {
   return (
     <section id="services" className="bg-[color:var(--cream)]">
@@ -20,7 +28,12 @@ export function PriorityServices() {
               className="rounded-md border border-[color:var(--border)] bg-white p-6"
             >
               <h3 className="font-display text-xl font-semibold text-[color:var(--forest)]">
-                {service.title}
+                <a
+                  href={SERVICE_LINKS[service.title]}
+                  className="rounded-sm underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
+                >
+                  {service.title}
+                </a>
               </h3>
               <p className="mt-2 text-[color:var(--foreground)]/85">{service.description}</p>
               <p className="mt-4 flex gap-2 border-t border-[color:var(--border)] pt-4 text-sm text-[color:var(--foreground)]/75">
