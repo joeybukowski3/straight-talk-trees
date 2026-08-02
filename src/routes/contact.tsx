@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
+import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { ContactForm } from "@/components/site/ContactForm";
 import { EmergencyBar } from "@/components/site/EmergencyBar";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
+import { SkipLink } from "@/components/site/SkipLink";
 import { trackConversion } from "@/lib/analytics";
 import { pageHead } from "@/lib/service-pages";
 import { SITE } from "@/lib/site-config";
@@ -22,6 +24,10 @@ const CONTACT_DETAILS = [
 ] as const;
 const FORM_NOTE =
   "Final recommendations and pricing may depend on property access, tree condition, safety requirements, and an onsite evaluation.";
+const BREADCRUMBS = [
+  { label: "Home", href: "/" },
+  { label: "Contact", href: "/contact" },
+] as const;
 
 export const Route = createFileRoute("/contact")({
   head: () => pageHead("/contact", TITLE, DESCRIPTION),
@@ -31,12 +37,17 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <>
+      <SkipLink />
       <EmergencyBar />
       <Header />
-      <main className="bg-[color:var(--cream)] text-[color:var(--foreground)] pb-24 md:pb-0">
+      <main
+        id="main-content"
+        className="bg-[color:var(--cream)] pb-24 text-[color:var(--foreground)] md:pb-0"
+      >
         <section className="border-b border-[color:var(--border)] bg-[color:var(--forest)] text-[color:var(--forest-foreground)]">
           <div className="mx-auto max-w-[1200px] px-4 py-14 sm:py-20">
-            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--amber-cta)]">
+            <Breadcrumbs items={BREADCRUMBS} inverted />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--amber-cta)]">
               Contact
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -68,13 +79,24 @@ function ContactPage() {
                 ))}
               </ul>
               <p className="mt-6 leading-7 text-[color:var(--foreground)]/75">{FORM_NOTE}</p>
+              <p className="mt-6 text-sm leading-6 text-[color:var(--foreground)]/70">
+                Looking for service details first? Review the{" "}
+                <a className="font-semibold underline" href="/services">
+                  full service overview
+                </a>{" "}
+                or confirm the{" "}
+                <a className="font-semibold underline" href="/service-areas">
+                  service area
+                </a>
+                .
+              </p>
             </div>
             <ContactForm variant="section" />
           </div>
         </section>
       </main>
       <Footer />
-      <MobileActionBar />
+      <MobileActionBar consultationHref="#contact" />
     </>
   );
 }

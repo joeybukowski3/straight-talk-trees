@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
+import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { ContactForm } from "@/components/site/ContactForm";
 import { EmergencyBar } from "@/components/site/EmergencyBar";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
+import { SkipLink } from "@/components/site/SkipLink";
 import { trackConversion } from "@/lib/analytics";
 import { pageHead } from "@/lib/service-pages";
 import { SITE } from "@/lib/site-config";
@@ -12,6 +14,10 @@ import { SITE } from "@/lib/site-config";
 const TITLE = "Houston and Southeast Texas Tree Service Areas | Bukowski Tree Company";
 const DESCRIPTION =
   "Bukowski Tree Company serves Houston and Southeast Texas. Call or submit your ZIP code or general location to confirm service availability for your property.";
+const BREADCRUMBS = [
+  { label: "Home", href: "/" },
+  { label: "Service Areas", href: "/service-areas" },
+] as const;
 
 export const Route = createFileRoute("/service-areas")({
   head: () => pageHead("/service-areas", TITLE, DESCRIPTION),
@@ -21,12 +27,17 @@ export const Route = createFileRoute("/service-areas")({
 function ServiceAreasPage() {
   return (
     <>
+      <SkipLink />
       <EmergencyBar />
       <Header />
-      <main className="bg-[color:var(--cream)] text-[color:var(--foreground)] pb-24 md:pb-0">
+      <main
+        id="main-content"
+        className="bg-[color:var(--cream)] pb-24 text-[color:var(--foreground)] md:pb-0"
+      >
         <section className="border-b border-[color:var(--border)] bg-[color:var(--forest)] text-[color:var(--forest-foreground)]">
           <div className="mx-auto max-w-[1200px] px-4 py-14 sm:py-20">
-            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--amber-cta)]">
+            <Breadcrumbs items={BREADCRUMBS} inverted />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--amber-cta)]">
               Service area
             </p>
             <h1 className="mt-3 max-w-4xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -87,37 +98,43 @@ function ServiceAreasPage() {
             </h2>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
+                href="/services"
+              >
+                All Services
+              </a>
+              <a
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
                 href="/tree-removal"
               >
                 Tree Removal
               </a>
               <a
-                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
                 href="/emergency-tree-service"
               >
                 Emergency Tree Service
               </a>
               <a
-                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
                 href="/dangerous-branch-removal"
               >
                 Dangerous Branch Removal
               </a>
               <a
-                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
                 href="/tree-trimming"
               >
                 Tree Trimming
               </a>
               <a
-                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
                 href="/storm-cleanup"
               >
                 Storm Cleanup
               </a>
               <a
-                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)]"
+                className="rounded-md border border-[color:var(--border)] bg-white px-4 py-3 text-sm font-semibold text-[color:var(--forest)] hover:border-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
                 href="/stump-grinding"
               >
                 Stump Grinding
@@ -142,7 +159,7 @@ function ServiceAreasPage() {
         </section>
       </main>
       <Footer />
-      <MobileActionBar />
+      <MobileActionBar consultationHref="#contact" />
     </>
   );
 }

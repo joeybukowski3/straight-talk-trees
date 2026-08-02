@@ -32,34 +32,42 @@ export function Footer() {
             <h2 className="text-sm font-semibold text-[color:var(--cream)]">Services</h2>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <a href="/tree-removal" className="hover:text-[color:var(--amber-cta)]">
+                <Link to="/services" className="hover:text-[color:var(--amber-cta)]">
+                  All Tree Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/tree-removal" className="hover:text-[color:var(--amber-cta)]">
                   Tree Removal
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/emergency-tree-service" className="hover:text-[color:var(--amber-cta)]">
+                <Link to="/emergency-tree-service" className="hover:text-[color:var(--amber-cta)]">
                   Emergency Tree Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/dangerous-branch-removal" className="hover:text-[color:var(--amber-cta)]">
+                <Link
+                  to="/dangerous-branch-removal"
+                  className="hover:text-[color:var(--amber-cta)]"
+                >
                   Dangerous Branch Removal
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/tree-trimming" className="hover:text-[color:var(--amber-cta)]">
+                <Link to="/tree-trimming" className="hover:text-[color:var(--amber-cta)]">
                   Tree Trimming
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/storm-cleanup" className="hover:text-[color:var(--amber-cta)]">
+                <Link to="/storm-cleanup" className="hover:text-[color:var(--amber-cta)]">
                   Storm Cleanup
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/stump-grinding" className="hover:text-[color:var(--amber-cta)]">
+                <Link to="/stump-grinding" className="hover:text-[color:var(--amber-cta)]">
                   Stump Grinding
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -82,14 +90,19 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="/service-areas" className="hover:text-[color:var(--amber-cta)]">
-                  Service Areas
-                </a>
+                <Link to="/about" className="hover:text-[color:var(--amber-cta)]">
+                  About
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="hover:text-[color:var(--amber-cta)]">
+                <Link to="/service-areas" className="hover:text-[color:var(--amber-cta)]">
+                  Service Areas
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-[color:var(--amber-cta)]">
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/privacy" className="hover:text-[color:var(--amber-cta)]">

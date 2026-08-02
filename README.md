@@ -4,6 +4,28 @@ Production domain: `https://bukowskitree.com`
 
 TanStack Start, React, TypeScript, Tailwind CSS, Vercel Analytics, and Vercel Speed Insights power the site.
 
+## Route architecture
+
+Public customer-facing routes are file-based TanStack Router routes under `src/routes`. Shared brand, navigation, conversion, and service-page components live under `src/components/site`.
+
+Indexable public routes:
+
+- `/`
+- `/services`
+- `/about`
+- `/tree-removal`
+- `/emergency-tree-service`
+- `/dangerous-branch-removal`
+- `/tree-trimming`
+- `/storm-cleanup`
+- `/stump-grinding`
+- `/service-areas`
+- `/contact`
+- `/privacy`
+- `/terms`
+
+The canonical public-route list used to generate the sitemap lives in `scripts/public-routes.js`. `npm run build` runs the sitemap generator before the production build so `public/sitemap.xml` stays synchronized with that list.
+
 ## Local development
 
 Requirements: a current Node.js LTS release and npm.
@@ -21,10 +43,16 @@ Open the local URL printed by Vite.
 ## Quality commands
 
 ```sh
+npm run generate:sitemap
+npx prettier --check .
 npm run lint
 npm run typecheck
 npm run build
 ```
+
+The GitHub Actions workflow performs strict changed-file Prettier and ESLint checks, keeps the known repository-wide lint baseline visible, builds the production app, and runs TypeScript validation.
+
+No automated test suite is currently configured.
 
 ## Environment variables
 
@@ -51,6 +79,21 @@ Expected payload:
 
 Never expose the webhook URL in browser code or commit its real value.
 
+## Analytics
+
+Vercel Analytics and Vercel Speed Insights are initialized once in the root application shell. Conversion tracking uses anonymous event names only. Names, phone numbers, emails, ZIP codes, locations, selected services, urgency values, and project descriptions must not be attached to analytics events.
+
+## SEO and public discovery
+
+- Expected canonical production origin: `https://bukowskitree.com`.
+- Each indexable route defines route-specific title, description, canonical, Open Graph, Twitter, and robots metadata.
+- The homepage contains LocalBusiness/HomeAndConstructionBusiness and FAQ structured data.
+- Dedicated service pages contain Service structured data.
+- Pages with visible breadcrumbs emit matching BreadcrumbList structured data.
+- `public/robots.txt` references the production sitemap.
+- `public/sitemap.xml` is generated from `scripts/public-routes.js` before each production build.
+- The existing real hero image is used as the current social-sharing image. A custom 1200×630 branded sharing asset is optional before or after launch.
+
 ## Vercel setup
 
 1. Import this GitHub repository into Vercel.
@@ -76,17 +119,9 @@ Safe failure test:
 3. Confirm the website displays the failure message and click-to-call fallback rather than reporting success.
 4. Restore the valid Preview variable.
 
-## Post-deployment checklist
+## Pre-launch checklist
 
-- Confirm `/`, `/privacy`, and `/terms` render without console or hydration errors.
-- Confirm canonical, Open Graph, Twitter, and JSON-LD output use `https://bukowskitree.com`.
-- Confirm `/robots.txt` and `/sitemap.xml` return successfully.
-- Confirm the social preview uses a real image asset and is readable on major sharing debuggers.
-- Confirm every phone link dials `+1 979-824-8240`.
-- Confirm successful and failed form behavior in production.
-- Confirm the webhook routes to the intended private destination email.
-- Confirm Vercel Analytics events appear without personal information.
-- Confirm the owner has verified insured status, emergency availability, service coverage, residential/commercial positioning, free-consultation language, and scheduling claims.
+Use [`docs/PRE-LAUNCH-CHECKLIST.md`](docs/PRE-LAUNCH-CHECKLIST.md) as the source of truth for code-complete work, required production configuration, and post-launch search/local-business tasks.
 
 ## Optional abuse hardening
 
