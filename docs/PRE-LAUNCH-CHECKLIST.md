@@ -18,7 +18,7 @@ This checklist separates code-complete work from operational launch work that re
 - Branded SVG favicon with no Lovable branding.
 - Existing real site image used for social metadata; no fabricated people, crews, reviews, or worksite imagery.
 - Centralized public-route list and build-generated sitemap without fabricated last-modified dates.
-- `robots.txt` referencing `https://bukowskitree.com/sitemap.xml`.
+- `robots.txt` referencing `https://bukowskitrees.com/sitemap.xml`.
 - Vercel Analytics and Speed Insights integration.
 - Anonymous conversion event tracking without consultation-form values.
 - Server-side contact-form validation, honeypot handling, timeout handling, and private webhook delivery architecture.
@@ -28,7 +28,7 @@ This checklist separates code-complete work from operational launch work that re
 
 ## Must be completed before public launch
 
-- Connect `bukowskitree.com` to the production Vercel project.
+- Connect `bukowskitrees.com` to the production Vercel project.
 - Configure the required DNS records for the production domain.
 - Configure the production `CONTACT_WEBHOOK_URL` as a private server-side environment variable.
 - Confirm the production form reaches the intended private business destination.
@@ -37,8 +37,8 @@ This checklist separates code-complete work from operational launch work that re
 - Confirm all public business claims with the owner, including insured status, locally owned positioning, free consultations, fast scheduling, 24/7 emergency-call availability, Houston and Southeast Texas coverage, residential and commercial service, and cleanup/debris-removal language.
 - Verify HTTPS and the preferred production host after the domain is connected.
 - Inspect live canonical URLs and confirm they resolve to the preferred production host.
-- Confirm `https://bukowskitree.com/robots.txt` loads successfully.
-- Confirm `https://bukowskitree.com/sitemap.xml` loads successfully as XML and contains only intended public routes.
+- Confirm `https://bukowskitrees.com/robots.txt` loads successfully.
+- Confirm `https://bukowskitrees.com/sitemap.xml` loads successfully as XML and contains only intended public routes.
 - Verify Vercel Analytics and Speed Insights receive production traffic without personal form information.
 - Test every production phone link on mobile and desktop-capable calling environments.
 - Review all public routes on representative mobile and desktop viewport sizes.

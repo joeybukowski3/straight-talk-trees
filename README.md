@@ -1,6 +1,6 @@
 # Bukowski Tree Company website
 
-Production domain: `https://bukowskitree.com`
+Production domain: `https://bukowskitrees.com`
 
 TanStack Start, React, TypeScript, Tailwind CSS, Vercel Analytics, and Vercel Speed Insights power the site.
 
@@ -85,7 +85,7 @@ Vercel Analytics and Vercel Speed Insights are initialized once in the root appl
 
 ## SEO and public discovery
 
-- Expected canonical production origin: `https://bukowskitree.com`.
+- Expected canonical production origin: `https://bukowskitrees.com`.
 - Each indexable route defines route-specific title, description, canonical, Open Graph, Twitter, and robots metadata.
 - The homepage contains LocalBusiness/HomeAndConstructionBusiness and FAQ structured data.
 - Dedicated service pages contain Service structured data.
@@ -97,7 +97,7 @@ Vercel Analytics and Vercel Speed Insights are initialized once in the root appl
 ## Vercel setup
 
 1. Import this GitHub repository into Vercel.
-2. Set the production domain to `bukowskitree.com` and configure the required DNS records.
+2. Set the production domain to `bukowskitrees.com` and configure the required DNS records. Vercel should redirect `www.bukowskitrees.com` to the apex domain.
 3. Open **Project Settings → Environment Variables**.
 4. Add `CONTACT_WEBHOOK_URL` for Production and any Preview environment used for form testing.
 5. Redeploy after changing environment variables.

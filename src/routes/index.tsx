@@ -18,7 +18,7 @@ import { Footer } from "@/components/site/Footer";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
 import { FAQS, SITE, SERVICES, absoluteUrl } from "@/lib/site-config";
 
-const TITLE = "Bukowski Tree Company | Houston Tree Service";
+const TITLE = "Tree Service in Houston, TX | Bukowski Tree Company";
 const DESCRIPTION =
   "Tree removal, dangerous branch removal, trimming, storm cleanup, and emergency calls throughout Houston and Southeast Texas.";
 

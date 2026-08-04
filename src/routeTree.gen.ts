@@ -10,12 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DangerousBranchRemovalRouteImport } from './routes/dangerous-branch-removal'
+import { Route as EmergencyTreeServiceRouteImport } from './routes/emergency-tree-service'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ServiceAreasRouteImport } from './routes/service-areas'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as StormCleanupRouteImport } from './routes/storm-cleanup'
+import { Route as StumpGrindingRouteImport } from './routes/stump-grinding'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TreeRemovalRouteImport } from './routes/tree-removal'
+import { Route as TreeTrimmingRouteImport } from './routes/tree-trimming'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DangerousBranchRemovalRoute = DangerousBranchRemovalRouteImport.update({
+  id: '/dangerous-branch-removal',
+  path: '/dangerous-branch-removal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyTreeServiceRoute = EmergencyTreeServiceRouteImport.update({
+  id: '/emergency-tree-service',
+  path: '/emergency-tree-service',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -23,40 +53,150 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiceAreasRoute = ServiceAreasRouteImport.update({
+  id: '/service-areas',
+  path: '/service-areas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StormCleanupRoute = StormCleanupRouteImport.update({
+  id: '/storm-cleanup',
+  path: '/storm-cleanup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StumpGrindingRoute = StumpGrindingRouteImport.update({
+  id: '/stump-grinding',
+  path: '/stump-grinding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TreeRemovalRoute = TreeRemovalRouteImport.update({
+  id: '/tree-removal',
+  path: '/tree-removal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreeTrimmingRoute = TreeTrimmingRouteImport.update({
+  id: '/tree-trimming',
+  path: '/tree-trimming',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
+  '/emergency-tree-service': typeof EmergencyTreeServiceRoute
   '/privacy': typeof PrivacyRoute
+  '/service-areas': typeof ServiceAreasRoute
+  '/services': typeof ServicesRoute
+  '/storm-cleanup': typeof StormCleanupRoute
+  '/stump-grinding': typeof StumpGrindingRoute
   '/terms': typeof TermsRoute
+  '/tree-removal': typeof TreeRemovalRoute
+  '/tree-trimming': typeof TreeTrimmingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
+  '/emergency-tree-service': typeof EmergencyTreeServiceRoute
   '/privacy': typeof PrivacyRoute
+  '/service-areas': typeof ServiceAreasRoute
+  '/services': typeof ServicesRoute
+  '/storm-cleanup': typeof StormCleanupRoute
+  '/stump-grinding': typeof StumpGrindingRoute
   '/terms': typeof TermsRoute
+  '/tree-removal': typeof TreeRemovalRoute
+  '/tree-trimming': typeof TreeTrimmingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
+  '/emergency-tree-service': typeof EmergencyTreeServiceRoute
   '/privacy': typeof PrivacyRoute
+  '/service-areas': typeof ServiceAreasRoute
+  '/services': typeof ServicesRoute
+  '/storm-cleanup': typeof StormCleanupRoute
+  '/stump-grinding': typeof StumpGrindingRoute
   '/terms': typeof TermsRoute
+  '/tree-removal': typeof TreeRemovalRoute
+  '/tree-trimming': typeof TreeTrimmingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/terms'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/dangerous-branch-removal'
+    | '/emergency-tree-service'
+    | '/privacy'
+    | '/service-areas'
+    | '/services'
+    | '/storm-cleanup'
+    | '/stump-grinding'
+    | '/terms'
+    | '/tree-removal'
+    | '/tree-trimming'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/terms'
-  id: '__root__' | '/' | '/privacy' | '/terms'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/dangerous-branch-removal'
+    | '/emergency-tree-service'
+    | '/privacy'
+    | '/service-areas'
+    | '/services'
+    | '/storm-cleanup'
+    | '/stump-grinding'
+    | '/terms'
+    | '/tree-removal'
+    | '/tree-trimming'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/dangerous-branch-removal'
+    | '/emergency-tree-service'
+    | '/privacy'
+    | '/service-areas'
+    | '/services'
+    | '/storm-cleanup'
+    | '/stump-grinding'
+    | '/terms'
+    | '/tree-removal'
+    | '/tree-trimming'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DangerousBranchRemovalRoute: typeof DangerousBranchRemovalRoute
+  EmergencyTreeServiceRoute: typeof EmergencyTreeServiceRoute
   PrivacyRoute: typeof PrivacyRoute
+  ServiceAreasRoute: typeof ServiceAreasRoute
+  ServicesRoute: typeof ServicesRoute
+  StormCleanupRoute: typeof StormCleanupRoute
+  StumpGrindingRoute: typeof StumpGrindingRoute
   TermsRoute: typeof TermsRoute
+  TreeRemovalRoute: typeof TreeRemovalRoute
+  TreeTrimmingRoute: typeof TreeTrimmingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,11 +208,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dangerous-branch-removal': {
+      id: '/dangerous-branch-removal'
+      path: '/dangerous-branch-removal'
+      fullPath: '/dangerous-branch-removal'
+      preLoaderRoute: typeof DangerousBranchRemovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency-tree-service': {
+      id: '/emergency-tree-service'
+      path: '/emergency-tree-service'
+      fullPath: '/emergency-tree-service'
+      preLoaderRoute: typeof EmergencyTreeServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service-areas': {
+      id: '/service-areas'
+      path: '/service-areas'
+      fullPath: '/service-areas'
+      preLoaderRoute: typeof ServiceAreasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/storm-cleanup': {
+      id: '/storm-cleanup'
+      path: '/storm-cleanup'
+      fullPath: '/storm-cleanup'
+      preLoaderRoute: typeof StormCleanupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stump-grinding': {
+      id: '/stump-grinding'
+      path: '/stump-grinding'
+      fullPath: '/stump-grinding'
+      preLoaderRoute: typeof StumpGrindingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -82,13 +278,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tree-removal': {
+      id: '/tree-removal'
+      path: '/tree-removal'
+      fullPath: '/tree-removal'
+      preLoaderRoute: typeof TreeRemovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tree-trimming': {
+      id: '/tree-trimming'
+      path: '/tree-trimming'
+      fullPath: '/tree-trimming'
+      preLoaderRoute: typeof TreeTrimmingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DangerousBranchRemovalRoute: DangerousBranchRemovalRoute,
+  EmergencyTreeServiceRoute: EmergencyTreeServiceRoute,
   PrivacyRoute: PrivacyRoute,
+  ServiceAreasRoute: ServiceAreasRoute,
+  ServicesRoute: ServicesRoute,
+  StormCleanupRoute: StormCleanupRoute,
+  StumpGrindingRoute: StumpGrindingRoute,
   TermsRoute: TermsRoute,
+  TreeRemovalRoute: TreeRemovalRoute,
+  TreeTrimmingRoute: TreeTrimmingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
