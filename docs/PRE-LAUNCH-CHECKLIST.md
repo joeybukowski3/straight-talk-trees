@@ -21,7 +21,7 @@ This checklist separates code-complete work from operational launch work that re
 - `robots.txt` referencing `https://bukowskitrees.com/sitemap.xml`.
 - Vercel Analytics and Speed Insights integration.
 - Anonymous conversion event tracking without consultation-form values.
-- Server-side contact-form validation, honeypot handling, timeout handling, and private webhook delivery architecture.
+- Server-side contact-form validation, honeypot handling, timeout handling, and direct Resend email delivery.
 - Keyboard-accessible navigation, skip links, visible focus states, native form labels, accessible status messages, and reduced-motion handling.
 - Safe-area-aware mobile action bar and mobile bottom spacing where the fixed bar is present.
 - GitHub Actions checks for changed-file Prettier, changed-file ESLint, repository lint baseline, production build, and TypeScript.
@@ -30,8 +30,8 @@ This checklist separates code-complete work from operational launch work that re
 
 - Connect `bukowskitrees.com` to the production Vercel project.
 - Configure the required DNS records for the production domain.
-- Configure the production `CONTACT_WEBHOOK_URL` as a private server-side environment variable.
-- Confirm the production form reaches the intended private business destination.
+- Configure the production `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` as private server-side environment variables, and confirm `bukowskitrees.com` is verified in Resend.
+- Confirm the production form reaches the intended private business destination(s).
 - Run one controlled successful production form submission and verify the success state.
 - Run a controlled failure-path test in a safe environment and verify the phone fallback.
 - Confirm all public business claims with the owner, including insured status, locally owned positioning, free consultations, fast scheduling, 24/7 emergency-call availability, Houston and Southeast Texas coverage, residential and commercial service, and cleanup/debris-removal language.
