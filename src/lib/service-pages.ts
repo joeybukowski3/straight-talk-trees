@@ -222,6 +222,7 @@ export function pageHead(path: string, title: string, description: string, servi
             areaServed: SITE.region,
             provider: {
               "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+              "@id": `${SITE.url}/#business`,
               name: SITE.businessName,
               url: SITE.url,
               telephone: SITE.phoneE164,
