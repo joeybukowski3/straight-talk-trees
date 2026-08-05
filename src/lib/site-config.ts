@@ -4,7 +4,7 @@ export const SITE = {
   phoneDisplay: "979-824-8240",
   phoneHref: "tel:+19798248240",
   phoneE164: "+19798248240",
-  url: "https://bukowskitrees.com",
+  url: "https://bukowskitree.com",
   tagline: "Houston’s Straightforward Tree Service Company.",
   defaultTitle: "Bukowski Tree Company | Houston Tree Service",
   defaultDescription:
