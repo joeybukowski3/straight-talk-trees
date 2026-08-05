@@ -3,15 +3,11 @@ import { EmergencyBar } from "@/components/site/EmergencyBar";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { TrustBar } from "@/components/site/TrustBar";
-import { PriorityServices } from "@/components/site/PriorityServices";
-import { ServicesList } from "@/components/site/ServicesList";
+import { JumpNav } from "@/components/site/JumpNav";
+import { Services } from "@/components/site/Services";
 import { WhenToCall } from "@/components/site/WhenToCall";
 import { WhyBukowski } from "@/components/site/WhyBukowski";
 import { Process } from "@/components/site/Process";
-import { Emergency } from "@/components/site/Emergency";
-import { Insurance } from "@/components/site/Insurance";
-import { ServiceArea } from "@/components/site/ServiceArea";
-import { About } from "@/components/site/About";
 import { FAQ } from "@/components/site/FAQ";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { Footer } from "@/components/site/Footer";
@@ -108,15 +104,11 @@ function Index() {
       <main id="main-content">
         <Hero />
         <TrustBar />
-        <PriorityServices />
-        <ServicesList />
+        <JumpNav />
+        <Services />
         <WhenToCall />
         <WhyBukowski />
         <Process />
-        <Emergency />
-        <Insurance />
-        <ServiceArea />
-        <About />
         <FAQ />
         <FinalCTA />
       </main>
