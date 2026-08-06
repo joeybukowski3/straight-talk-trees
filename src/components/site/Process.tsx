@@ -30,18 +30,19 @@ const STEPS = [
 export function Process() {
   return (
     <section id="process" className="scroll-mt-24 bg-white">
-      <div className="mx-auto max-w-[1200px] px-4 py-14 sm:py-16">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-[color:var(--forest)] sm:text-4xl">
+      <div className="section-shell section-pad">
+        <p className="type-eyebrow text-[color:var(--forest)]">How it works</p>
+        <h2 className="type-h2 section-heading mt-2 text-[color:var(--forest)]">
           What Happens After You Contact Us
         </h2>
-        <p className="mt-3 max-w-3xl text-[color:var(--foreground)]/80 sm:text-lg">
+        <p className="type-body-lg section-lede text-[color:var(--foreground)]/80">
           Every project starts with a conversation and, when needed, an onsite evaluation before
           work is scheduled. Final recommendations and pricing can depend on property access, tree
           condition, safety requirements, and that evaluation.
         </p>
 
-        <details className="group mt-8 rounded-md border border-[color:var(--border)] bg-[color:var(--cream)]">
-          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-md px-5 py-4 font-display text-lg font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]">
+        <details className="group mt-8 border-t border-[color:var(--border)]">
+          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 type-h3 text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]">
             <span>View the 6-Step Process</span>
             <span
               aria-hidden
@@ -50,14 +51,12 @@ export function Process() {
               +
             </span>
           </summary>
-          <ol className="grid gap-6 border-t border-[color:var(--border)] px-5 py-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="grid gap-8 border-t border-[color:var(--border)] py-8 sm:grid-cols-2 lg:grid-cols-3">
             {STEPS.map((step, index) => (
               <li key={step.title}>
-                <div className="text-sm font-semibold text-[color:var(--amber-cta)]">
-                  Step {index + 1}
-                </div>
-                <h3 className="mt-1 font-semibold text-[color:var(--forest)]">{step.title}</h3>
-                <p className="mt-1 text-sm text-[color:var(--foreground)]/85">{step.body}</p>
+                <div className="type-eyebrow text-[color:var(--amber-cta)]">Step {index + 1}</div>
+                <h3 className="type-h3 mt-2 text-[color:var(--forest)]">{step.title}</h3>
+                <p className="type-meta mt-1.5 text-[color:var(--foreground)]/85">{step.body}</p>
               </li>
             ))}
           </ol>

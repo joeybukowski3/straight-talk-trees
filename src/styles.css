@@ -60,6 +60,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
   --color-forest-foreground: var(--forest-foreground);
   --color-charcoal: var(--charcoal);
   --color-cream: var(--cream);
@@ -75,6 +76,7 @@
   /* Brand palette (mapped from hex):
      forest #183A2A, charcoal #202521, cream #F6F4EE, sage #DDE5DD, amber #D99024 */
   --forest: oklch(0.32 0.05 155);
+  --forest-deep: oklch(0.255 0.045 155);
   --forest-foreground: oklch(0.97 0.01 90);
   --charcoal: oklch(0.24 0.005 150);
   --cream: oklch(0.97 0.01 90);
@@ -181,9 +183,12 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
   html {
@@ -191,10 +196,261 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.001ms !important;
       transition-duration: 0.001ms !important;
     }
+  }
+}
+
+/*
+ * Homepage / site typography + section rhythm.
+ * Prefer these utilities over one-off heading classes for consistent hierarchy.
+ */
+@layer components {
+  .type-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .type-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.875rem, 3.4vw, 2.625rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+
+  .type-h3 {
+    font-family: var(--font-display);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .type-body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .type-body-lg {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  @media (min-width: 640px) {
+    .type-body-lg {
+      font-size: 1.125rem;
+    }
+  }
+
+  .type-meta {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .type-meta-sm {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  /* ~1280px content system with controlled side padding */
+  .section-shell {
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-shell {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Hero / architectural band — up to ~1360px */
+  .hero-shell {
+    margin-inline: auto;
+    max-width: 85rem;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-shell {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  .section-pad {
+    padding-block: 3.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-pad {
+      padding-block: 4.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-pad {
+      padding-block: 5rem;
+    }
+  }
+
+  .section-heading {
+    max-width: 28rem;
+  }
+
+  .section-lede {
+    margin-top: 1rem;
+    max-width: 28rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    background-color: var(--amber-cta);
+    padding: 0.75rem 1.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--amber-cta-foreground);
+    transition: filter 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--forest);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    border: 1px solid color-mix(in oklab, var(--forest) 40%, transparent);
+    background-color: transparent;
+    padding: 0.75rem 1.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--forest);
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: color-mix(in oklab, var(--forest) 6%, transparent);
+  }
+
+  .btn-secondary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--forest);
+  }
+
+  .btn-secondary-on-dark {
+    border-color: color-mix(in oklab, var(--forest-foreground) 55%, transparent);
+    color: var(--forest-foreground);
+  }
+
+  .btn-secondary-on-dark:hover {
+    background-color: color-mix(in oklab, white 8%, transparent);
+    border-color: color-mix(in oklab, var(--forest-foreground) 75%, transparent);
+  }
+
+  .btn-secondary-on-dark:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--forest-deep),
+      0 0 0 4px white;
+  }
+
+  .btn-primary-on-dark:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--forest-deep),
+      0 0 0 4px white;
+  }
+
+  /* Compact horizontal trust anchors (hero) */
+  .hero-trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-trust-row li {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--forest-foreground) 72%, transparent);
+  }
+
+  .hero-trust-row li:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0.75rem;
+    margin-inline: 0.75rem;
+    background-color: color-mix(in oklab, var(--forest-foreground) 28%, transparent);
   }
 }

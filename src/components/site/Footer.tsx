@@ -5,7 +5,7 @@ import { trackConversion } from "@/lib/analytics";
 export function Footer() {
   return (
     <footer className="bg-[color:var(--charcoal)] text-[color:var(--cream)]/85">
-      <div className="mx-auto max-w-[1200px] px-4 py-12">
+      <div className="section-shell py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link

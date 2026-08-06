@@ -19,7 +19,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[color:var(--border)] bg-[color:var(--cream)]/95 backdrop-blur">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-3">
+      <div className="section-shell flex items-center justify-between gap-4 py-3">
         <Link
           to="/"
           className="flex items-center gap-2 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
