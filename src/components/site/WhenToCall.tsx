@@ -11,13 +11,13 @@ export function WhenToCall() {
       id="when-to-call"
       className="scroll-mt-24 border-y border-[color:var(--border)] bg-white"
     >
-      <div className="section-shell section-pad grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-        <div>
+      <div className="section-shell section-pad grid gap-10 lg:grid-cols-[minmax(0,0.32fr)_minmax(0,0.68fr)] lg:items-start lg:gap-14 xl:gap-16">
+        <div className="lg:sticky lg:top-28">
           <p className="type-eyebrow text-[color:var(--forest)]">Practical guidance</p>
-          <h2 className="type-h2 mt-2 max-w-xl text-[color:var(--forest)]">
+          <h2 className="type-h2 mt-2 max-w-[18ch] text-[color:var(--forest)]">
             When Should You Call a Tree-Service Professional?
           </h2>
-          <p className="type-body mt-4 max-w-lg text-[color:var(--foreground)]/85">
+          <p className="type-body mt-4 max-w-md text-[color:var(--foreground)]/85">
             Visible damage does not confirm a tree&rsquo;s condition, but these signs often call for
             professional evaluation. Stay clear of unstable areas and call immediately for an urgent
             or dangerous condition.
@@ -25,14 +25,14 @@ export function WhenToCall() {
           <a
             href={SITE.phoneHref}
             onClick={() => trackConversion("phone_emergency_click")}
-            className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-md bg-[color:var(--forest)] px-5 py-3 text-sm font-semibold text-[color:var(--forest-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+            className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-[var(--radius)] bg-[color:var(--forest)] px-5 py-3 text-sm font-semibold text-[color:var(--forest-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
           >
             <PhoneCall className="h-4 w-4" aria-hidden />
             Call {SITE.phoneDisplay}
           </a>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <ul className="divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
             {VISIBLE_ITEMS.map((item) => (
               <li

@@ -10,7 +10,7 @@ const JUMP_LINKS = [
 export function JumpNav() {
   return (
     <nav aria-label="Jump to section" className="border-b border-[color:var(--border)] bg-white">
-      <div className="mx-auto flex max-w-[72rem] items-center gap-1 overflow-x-auto px-4 py-2.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="section-shell flex items-center gap-1 overflow-x-auto py-2.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {JUMP_LINKS.map((link, index) => (
           <span key={link.href} className="inline-flex shrink-0 items-center">
             {index > 0 && (

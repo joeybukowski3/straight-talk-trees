@@ -3,10 +3,12 @@ import { FAQS } from "@/lib/site-config";
 export function FAQ() {
   return (
     <section id="faq" className="scroll-mt-24 bg-[color:var(--cream)]">
-      <div className="mx-auto max-w-[48rem] px-4 py-14 sm:py-16">
-        <p className="type-eyebrow text-[color:var(--forest)]">FAQ</p>
-        <h2 className="type-h2 mt-2 text-[color:var(--forest)]">Frequently Asked Questions</h2>
-        <div className="mt-8 divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
+      <div className="section-shell section-pad">
+        <div className="max-w-3xl">
+          <p className="type-eyebrow text-[color:var(--forest)]">FAQ</p>
+          <h2 className="type-h2 mt-2 text-[color:var(--forest)]">Frequently Asked Questions</h2>
+        </div>
+        <div className="mt-8 max-w-4xl divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
           {FAQS.map((item) => (
             <details key={item.question} className="group">
               <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-[color:var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]">

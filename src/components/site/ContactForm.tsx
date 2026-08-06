@@ -22,7 +22,7 @@ type FieldProps = {
 
 const fieldLabelClass = "block text-sm font-medium text-[color:var(--foreground)]";
 const fieldControlClass =
-  "mt-1.5 min-h-11 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base text-[color:var(--foreground)] focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/25";
+  "mt-1.5 min-h-10 w-full rounded-[var(--radius)] border border-[color:var(--border)] bg-white px-3 py-2 text-base text-[color:var(--foreground)] focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/25";
 
 export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section" }) {
   const submit = useServerFn(submitContact);
@@ -87,10 +87,11 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
     }
   }
 
-  const wrap =
-    variant === "hero"
-      ? "relative border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] shadow-[0_12px_32px_rgba(24,58,42,0.12)] sm:p-6"
-      : "relative border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] sm:p-6";
+  const isHero = variant === "hero";
+
+  const wrap = isHero
+    ? "relative overflow-hidden rounded-[var(--radius)] border border-[color:var(--charcoal)]/12 bg-white text-[color:var(--foreground)] shadow-[0_1px_0_rgba(32,37,33,0.04),0_10px_28px_rgba(24,58,42,0.1)]"
+    : "relative rounded-[var(--radius)] border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] sm:p-6";
 
   return (
     <form
@@ -100,27 +101,42 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
       aria-labelledby={`${formId}-title`}
       aria-describedby={`${formId}-helper`}
     >
-      {variant === "hero" && (
-        <p className="type-eyebrow text-[color:var(--forest)]">Consultation request</p>
+      {isHero ? (
+        <header className="border-b border-[color:var(--border)] bg-[color:var(--cream)] px-4 py-4 sm:px-5">
+          <p className="type-eyebrow text-[color:var(--forest)]">Consultation request</p>
+          <h2 id={`${formId}-title`} className="type-h3 mt-1.5 text-[color:var(--forest)]">
+            Request a Free Consultation
+          </h2>
+          <p
+            id={`${formId}-helper`}
+            className="type-meta mt-1.5 text-[color:var(--muted-foreground)]"
+          >
+            Tell us what you see and where the property is located. All fields are required. For an
+            urgent condition, call{" "}
+            <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">
+              {SITE.phoneDisplay}
+            </a>
+            .
+          </p>
+        </header>
+      ) : (
+        <>
+          <h2 id={`${formId}-title`} className="type-h3 text-[color:var(--forest)]">
+            Request a Free Consultation
+          </h2>
+          <p
+            id={`${formId}-helper`}
+            className="type-meta mt-2 text-[color:var(--muted-foreground)]"
+          >
+            Tell us what you see and where the property is located. All fields are required. For an
+            urgent condition, call{" "}
+            <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">
+              {SITE.phoneDisplay}
+            </a>
+            .
+          </p>
+        </>
       )}
-      <h2
-        id={`${formId}-title`}
-        className={
-          variant === "hero"
-            ? "type-h3 mt-2 text-[color:var(--forest)]"
-            : "type-h3 text-[color:var(--forest)]"
-        }
-      >
-        Request a Free Consultation
-      </h2>
-      <p id={`${formId}-helper`} className="type-meta mt-2 text-[color:var(--muted-foreground)]">
-        Tell us what you see and where the property is located. All fields are required. For an
-        urgent condition, call{" "}
-        <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">
-          {SITE.phoneDisplay}
-        </a>
-        .
-      </p>
 
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         <label>
@@ -129,141 +145,145 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
         </label>
       </div>
 
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <Field
-          formId={formId}
-          label="Name"
-          name="name"
-          error={errors.name}
-          autoComplete="name"
-          placeholder="Your name"
-          required
-          maxLength={120}
-        />
-        <Field
-          formId={formId}
-          label="Phone number"
-          name="phone"
-          type="tel"
-          inputMode="tel"
-          error={errors.phone}
-          autoComplete="tel"
-          placeholder="Best number to reach you"
-          required
-          maxLength={40}
-        />
-        <Field
-          formId={formId}
-          label="Email"
-          name="email"
-          type="email"
-          inputMode="email"
-          error={errors.email}
-          autoComplete="email"
-          placeholder="you@example.com"
-          required
-          className="sm:col-span-2"
-          maxLength={200}
-        />
-        <SelectField
-          formId={formId}
-          label="Service needed"
-          name="service"
-          options={SERVICE_OPTIONS}
-          error={errors.service}
-          required
-        />
-        <SelectField
-          formId={formId}
-          label="How urgent is it?"
-          name="urgency"
-          options={URGENCY_OPTIONS}
-          error={errors.urgency}
-          required
-        />
-        <Field
-          formId={formId}
-          label="ZIP code or general location"
-          name="location"
-          inputMode="text"
-          error={errors.location}
-          autoComplete="postal-code"
-          placeholder="Property ZIP code or area"
-          required
-          className="sm:col-span-2"
-          maxLength={120}
-        />
-        <div className="sm:col-span-2">
-          <label htmlFor={`${formId}-description`} className={fieldLabelClass}>
-            Brief description of the tree or property concern
-          </label>
-          <p
-            id={`${formId}-description-help`}
-            className="type-meta-sm mt-1 text-[color:var(--muted-foreground)]"
-          >
-            Include what is damaged, leaning, hanging, fallen, overgrown, or affecting access.
-          </p>
-          <textarea
-            id={`${formId}-description`}
-            name="description"
-            rows={3}
+      <div className={isHero ? "px-4 pb-4 pt-4 sm:px-5 sm:pb-5 sm:pt-4" : "mt-5"}>
+        <div className="grid gap-3 sm:grid-cols-2 sm:gap-3.5">
+          <Field
+            formId={formId}
+            label="Name"
+            name="name"
+            error={errors.name}
+            autoComplete="name"
+            placeholder="Your name"
             required
-            maxLength={2000}
-            placeholder="Example: A large limb broke during the storm and is hanging over the driveway."
-            aria-invalid={Boolean(errors.description)}
-            aria-describedby={[
-              `${formId}-description-help`,
-              errors.description ? `${formId}-description-error` : undefined,
-            ]
-              .filter(Boolean)
-              .join(" ")}
-            className={fieldControlClass}
+            maxLength={120}
           />
-          {errors.description && (
+          <Field
+            formId={formId}
+            label="Phone number"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            error={errors.phone}
+            autoComplete="tel"
+            placeholder="Best number to reach you"
+            required
+            maxLength={40}
+          />
+          <Field
+            formId={formId}
+            label="Email"
+            name="email"
+            type="email"
+            inputMode="email"
+            error={errors.email}
+            autoComplete="email"
+            placeholder="you@example.com"
+            required
+            className="sm:col-span-2"
+            maxLength={200}
+          />
+          <SelectField
+            formId={formId}
+            label="Service needed"
+            name="service"
+            options={SERVICE_OPTIONS}
+            error={errors.service}
+            required
+          />
+          <SelectField
+            formId={formId}
+            label="How urgent is it?"
+            name="urgency"
+            options={URGENCY_OPTIONS}
+            error={errors.urgency}
+            required
+          />
+          <Field
+            formId={formId}
+            label="ZIP code or general location"
+            name="location"
+            inputMode="text"
+            error={errors.location}
+            autoComplete="postal-code"
+            placeholder="Property ZIP code or area"
+            required
+            className="sm:col-span-2"
+            maxLength={120}
+          />
+          <div className="sm:col-span-2">
+            <label htmlFor={`${formId}-description`} className={fieldLabelClass}>
+              Brief description of the tree or property concern
+            </label>
             <p
-              id={`${formId}-description-error`}
-              className="mt-1 text-xs text-[color:var(--destructive)]"
+              id={`${formId}-description-help`}
+              className="type-meta-sm mt-1 text-[color:var(--muted-foreground)]"
             >
-              {errors.description}
+              Include what is damaged, leaning, hanging, fallen, overgrown, or affecting access.
+            </p>
+            <textarea
+              id={`${formId}-description`}
+              name="description"
+              rows={3}
+              required
+              maxLength={2000}
+              placeholder="Example: A large limb broke during the storm and is hanging over the driveway."
+              aria-invalid={Boolean(errors.description)}
+              aria-describedby={[
+                `${formId}-description-help`,
+                errors.description ? `${formId}-description-error` : undefined,
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              className={fieldControlClass}
+            />
+            {errors.description && (
+              <p
+                id={`${formId}-description-error`}
+                className="mt-1 text-xs text-[color:var(--destructive)]"
+              >
+                {errors.description}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className={isHero ? "mt-4 border-t border-[color:var(--border)] pt-4" : "mt-5"}>
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {status === "submitting" ? "Sending request…" : "Send Consultation Request"}
+          </button>
+        </div>
+
+        <div aria-live="polite" aria-atomic="true">
+          {status === "success" && (
+            <p
+              role="status"
+              className="mt-3 border border-[color:var(--forest)]/25 bg-[color:var(--sage)] px-3 py-2.5 text-sm text-[color:var(--forest)]"
+            >
+              Your request was received. The company can follow up using the contact information
+              provided. Call{" "}
+              <a href={SITE.phoneHref} className="font-semibold underline">
+                {SITE.phoneDisplay}
+              </a>{" "}
+              if the condition becomes urgent.
+            </p>
+          )}
+          {status === "error" && (
+            <p
+              role="alert"
+              className="mt-3 border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2.5 text-sm text-[color:var(--destructive)]"
+            >
+              The request could not be sent. Review the highlighted fields or call{" "}
+              <a href={SITE.phoneHref} className="font-semibold underline">
+                {SITE.phoneDisplay}
+              </a>
+              .
             </p>
           )}
         </div>
-      </div>
-
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-      >
-        {status === "submitting" ? "Sending request…" : "Send Consultation Request"}
-      </button>
-
-      <div aria-live="polite" aria-atomic="true">
-        {status === "success" && (
-          <p
-            role="status"
-            className="mt-4 border border-[color:var(--forest)]/25 bg-[color:var(--sage)] px-3 py-2.5 text-sm text-[color:var(--forest)]"
-          >
-            Your request was received. The company can follow up using the contact information
-            provided. Call{" "}
-            <a href={SITE.phoneHref} className="font-semibold underline">
-              {SITE.phoneDisplay}
-            </a>{" "}
-            if the condition becomes urgent.
-          </p>
-        )}
-        {status === "error" && (
-          <p
-            role="alert"
-            className="mt-4 border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2.5 text-sm text-[color:var(--destructive)]"
-          >
-            The request could not be sent. Review the highlighted fields or call{" "}
-            <a href={SITE.phoneHref} className="font-semibold underline">
-              {SITE.phoneDisplay}
-            </a>
-            .
-          </p>
-        )}
       </div>
     </form>
   );

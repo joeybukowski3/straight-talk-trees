@@ -7,7 +7,7 @@ export function WhyBukowski() {
   return (
     <section
       id="why"
-      className="scroll-mt-24 border-y border-[color:var(--border)] bg-[color:var(--sage)]/40"
+      className="scroll-mt-24 border-y border-[color:var(--border)] bg-[color:var(--sage)]/55"
     >
       <div className="section-shell section-pad">
         <p className="type-eyebrow text-[color:var(--forest)]">Why Bukowski</p>
