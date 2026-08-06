@@ -8,13 +8,13 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-[color:var(--forest)] text-[color:var(--forest-foreground)]"
+      className="relative overflow-hidden border-b border-[color:var(--forest)]/20 bg-[color:var(--forest)] text-[color:var(--forest-foreground)]"
     >
-      <div className="absolute inset-0 opacity-[0.08]" aria-hidden="true">
+      <div className="absolute inset-0 opacity-[0.05]" aria-hidden="true">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="hero-tree-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
-              <g transform="translate(6 6)">
+            <pattern id="hero-tree-pattern" width="48" height="48" patternUnits="userSpaceOnUse">
+              <g transform="translate(8 8)">
                 <path d={TREE_MARK_PATH} fill="currentColor" />
               </g>
             </pattern>
@@ -22,41 +22,47 @@ export function Hero() {
           <rect width="100%" height="100%" fill="url(#hero-tree-pattern)" />
         </svg>
       </div>
-      <div className="relative mx-auto grid max-w-[1200px] gap-9 px-4 py-12 sm:py-18 lg:grid-cols-[1.12fr_1fr] lg:gap-12 lg:py-20">
-        <div className="self-center">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-[color:var(--amber-cta)]">
-            Local tree service · {SITE.region}
+
+      <div className="relative mx-auto grid max-w-[72rem] gap-8 px-4 py-10 sm:gap-10 sm:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,24.5rem)] lg:items-start lg:gap-14 lg:py-16 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,26rem)]">
+        <div className="flex min-w-0 flex-col justify-center lg:min-h-[28rem] lg:py-2">
+          <p className="type-eyebrow text-[color:var(--amber-cta)]">
+            Bukowski Tree Company · Local tree service
           </p>
-          <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-            {SITE.tagline}
+
+          <h1 className="type-h1 mt-4 max-w-[18ch] text-[color:var(--forest-foreground)]">
+            {SITE.tagline.replace(/\.$/, "")}
           </h1>
-          <p className="mt-5 max-w-xl text-base text-[color:var(--forest-foreground)]/88 sm:text-lg">
-            Tree removal, dangerous branch and limb removal, storm cleanup, and trimming for homes
-            and commercial properties across {SITE.region}.
+
+          <p className="type-body-lg mt-5 max-w-xl text-[color:var(--forest-foreground)]/90">
+            Tree removal, storm cleanup, dangerous limb removal, trimming, and emergency tree
+            service throughout South Houston and Southeast Texas.
           </p>
-          <p className="mt-4 max-w-xl text-sm text-[color:var(--forest-foreground)]/75">
+
+          <p className="type-meta mt-4 max-w-xl text-[color:var(--forest-foreground)]/72">
             For a fallen tree, hanging limb, blocked access, or another urgent condition, call
             directly. For nonurgent work, use the consultation form.
           </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <a
+              href="#contact"
+              onClick={() => trackConversion("consultation_hero_click")}
+              className="btn-primary btn-primary-on-dark text-base"
+            >
+              Request a Free Consultation
+            </a>
             <a
               href={SITE.phoneHref}
               onClick={() => trackConversion("phone_hero_click")}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[color:var(--amber-cta)] px-5 py-3 text-base font-semibold text-[color:var(--amber-cta-foreground)] shadow-sm hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--forest)]"
+              className="btn-secondary btn-secondary-on-dark text-base"
             >
               <Phone className="h-4 w-4" aria-hidden />
               Call {SITE.phoneDisplay}
             </a>
-            <a
-              href="#contact"
-              onClick={() => trackConversion("consultation_hero_click")}
-              className="inline-flex min-h-12 items-center justify-center rounded-md border border-[color:var(--forest-foreground)]/40 px-5 py-3 text-base font-medium text-[color:var(--forest-foreground)] hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              Request a Free Consultation
-            </a>
           </div>
         </div>
-        <div id="contact" className="scroll-mt-24 lg:mt-2">
+
+        <div id="contact" className="min-w-0 scroll-mt-24 lg:sticky lg:top-24">
           <ContactForm variant="hero" />
         </div>
       </div>

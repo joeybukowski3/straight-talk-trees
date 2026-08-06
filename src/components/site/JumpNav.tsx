@@ -10,15 +10,21 @@ const JUMP_LINKS = [
 export function JumpNav() {
   return (
     <nav aria-label="Jump to section" className="border-b border-[color:var(--border)] bg-white">
-      <div className="mx-auto flex max-w-[1200px] gap-2 overflow-x-auto px-4 py-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {JUMP_LINKS.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="inline-flex min-h-9 shrink-0 items-center rounded-full border border-[color:var(--border)] px-4 py-1.5 text-sm font-medium text-[color:var(--forest)] hover:border-[color:var(--forest)] hover:bg-[color:var(--sage)]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
-          >
-            {link.label}
-          </a>
+      <div className="mx-auto flex max-w-[72rem] items-center gap-1 overflow-x-auto px-4 py-2.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {JUMP_LINKS.map((link, index) => (
+          <span key={link.href} className="inline-flex shrink-0 items-center">
+            {index > 0 && (
+              <span className="mx-1 text-[color:var(--border)]" aria-hidden>
+                |
+              </span>
+            )}
+            <a
+              href={link.href}
+              className="inline-flex min-h-9 items-center px-2.5 py-1.5 text-sm font-medium text-[color:var(--forest)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]"
+            >
+              {link.label}
+            </a>
+          </span>
         ))}
       </div>
     </nav>

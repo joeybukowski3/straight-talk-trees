@@ -5,22 +5,26 @@ import { trackConversion } from "@/lib/analytics";
 
 export function WhyBukowski() {
   return (
-    <section id="why" className="scroll-mt-24 bg-[color:var(--sage)]/60">
-      <div className="mx-auto max-w-[1200px] px-4 py-14 sm:py-16">
-        <h2 className="max-w-3xl font-display text-3xl font-semibold tracking-tight text-[color:var(--forest)] sm:text-4xl">
+    <section
+      id="why"
+      className="scroll-mt-24 border-y border-[color:var(--border)] bg-[color:var(--sage)]/40"
+    >
+      <div className="section-shell section-pad">
+        <p className="type-eyebrow text-[color:var(--forest)]">Why Bukowski</p>
+        <h2 className="type-h2 section-heading mt-2 text-[color:var(--forest)]">
           Why Bukowski Tree Company
         </h2>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--forest)]">
+            <h3 className="type-eyebrow text-[color:var(--forest)]">
               Tree work without the runaround
             </h3>
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-5 divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
               {WHY_POINTS.map((point) => (
-                <li key={point.title}>
+                <li key={point.title} className="py-4">
                   <p className="font-semibold text-[color:var(--forest)]">{point.title}</p>
-                  <p className="mt-0.5 text-sm text-[color:var(--foreground)]/85">
+                  <p className="type-meta mt-1 text-[color:var(--foreground)]/85">
                     {point.description}
                   </p>
                 </li>
@@ -29,20 +33,20 @@ export function WhyBukowski() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--forest)]">
+            <h3 className="type-eyebrow text-[color:var(--forest)]">
               Local ownership & service area
             </h3>
-            <p className="mt-4 text-[color:var(--foreground)]/85">
+            <p className="type-body mt-5 text-[color:var(--foreground)]/85">
               {SITE.businessName} is locally owned by {SITE.ownerName} and serves residential and
               commercial properties across {SITE.region}. Availability depends on the specific
               property location and current scheduling — call to confirm coverage, or enter your ZIP
               code or general location in the consultation form.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={SITE.phoneHref}
                 onClick={() => trackConversion("phone_emergency_click")}
-                className="inline-flex min-h-12 items-center gap-2 rounded-md bg-[color:var(--amber-cta)] px-5 py-3 text-sm font-semibold text-[color:var(--amber-cta-foreground)] shadow-sm hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+                className="btn-primary"
               >
                 <Phone className="h-4 w-4" aria-hidden />
                 Call to confirm availability
@@ -50,14 +54,14 @@ export function WhyBukowski() {
               <a
                 href="#contact"
                 onClick={() => trackConversion("consultation_cta_click")}
-                className="inline-flex min-h-12 items-center rounded-md border border-[color:var(--forest)] px-5 py-3 text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+                className="btn-secondary"
               >
                 Enter your location
               </a>
             </div>
 
-            <details className="group mt-6 rounded-md border border-[color:var(--border)] bg-white">
-              <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 rounded-md px-4 py-3 text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]">
+            <details className="group mt-8 border-t border-[color:var(--border)]">
+              <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)]">
                 <span>More About Bukowski Tree Company</span>
                 <span
                   aria-hidden
@@ -66,7 +70,7 @@ export function WhyBukowski() {
                   +
                 </span>
               </summary>
-              <div className="space-y-4 border-t border-[color:var(--border)] px-4 py-4 text-sm text-[color:var(--foreground)]/85">
+              <div className="space-y-4 border-t border-[color:var(--border)] py-4 type-meta text-[color:var(--foreground)]/85">
                 <p>
                   Jake works with homeowners, landlords, property managers, businesses, and
                   commercial-property customers who need tree removal, branch removal, trimming,
@@ -87,7 +91,7 @@ export function WhyBukowski() {
                       <li key={item}>— {item}</li>
                     ))}
                   </ul>
-                  <p className="mt-2 text-xs text-[color:var(--muted-foreground)]">
+                  <p className="type-meta-sm mt-2 text-[color:var(--muted-foreground)]">
                     Coverage and payment decisions are made by the property owner&rsquo;s insurance
                     carrier. Bukowski Tree Company does not guarantee claim approval, coverage, or
                     reimbursement.

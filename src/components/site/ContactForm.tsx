@@ -20,6 +20,10 @@ type FieldProps = {
   inputMode?: "email" | "numeric" | "search" | "tel" | "text" | "url";
 };
 
+const fieldLabelClass = "block text-sm font-medium text-[color:var(--foreground)]";
+const fieldControlClass =
+  "mt-1.5 min-h-11 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base text-[color:var(--foreground)] focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/25";
+
 export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section" }) {
   const submit = useServerFn(submitContact);
   const [status, setStatus] = useState<Status>("idle");
@@ -85,8 +89,8 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
 
   const wrap =
     variant === "hero"
-      ? "relative rounded-lg border border-[color:var(--border)] bg-white p-4 text-[color:var(--foreground)] shadow-sm sm:p-6"
-      : "relative rounded-lg border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] sm:p-6";
+      ? "relative border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] shadow-[0_12px_32px_rgba(24,58,42,0.12)] sm:p-6"
+      : "relative border border-[color:var(--border)] bg-white p-5 text-[color:var(--foreground)] sm:p-6";
 
   return (
     <form
@@ -96,10 +100,20 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
       aria-labelledby={`${formId}-title`}
       aria-describedby={`${formId}-helper`}
     >
-      <h2 id={`${formId}-title`} className="text-xl font-semibold text-[color:var(--forest)]">
+      {variant === "hero" && (
+        <p className="type-eyebrow text-[color:var(--forest)]">Consultation request</p>
+      )}
+      <h2
+        id={`${formId}-title`}
+        className={
+          variant === "hero"
+            ? "type-h3 mt-2 text-[color:var(--forest)]"
+            : "type-h3 text-[color:var(--forest)]"
+        }
+      >
         Request a Free Consultation
       </h2>
-      <p id={`${formId}-helper`} className="mt-1 text-sm text-[color:var(--muted-foreground)]">
+      <p id={`${formId}-helper`} className="type-meta mt-2 text-[color:var(--muted-foreground)]">
         Tell us what you see and where the property is located. All fields are required. For an
         urgent condition, call{" "}
         <a href={SITE.phoneHref} className="font-semibold text-[color:var(--forest)] underline">
@@ -115,7 +129,7 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
         </label>
       </div>
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <Field
           formId={formId}
           label="Name"
@@ -180,15 +194,12 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
           maxLength={120}
         />
         <div className="sm:col-span-2">
-          <label
-            htmlFor={`${formId}-description`}
-            className="block text-sm font-medium text-[color:var(--foreground)]"
-          >
+          <label htmlFor={`${formId}-description`} className={fieldLabelClass}>
             Brief description of the tree or property concern
           </label>
           <p
             id={`${formId}-description-help`}
-            className="mt-1 text-xs text-[color:var(--muted-foreground)]"
+            className="type-meta-sm mt-1 text-[color:var(--muted-foreground)]"
           >
             Include what is damaged, leaning, hanging, fallen, overgrown, or affecting access.
           </p>
@@ -206,7 +217,7 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
             ]
               .filter(Boolean)
               .join(" ")}
-            className="mt-2 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30"
+            className={fieldControlClass}
           />
           {errors.description && (
             <p
@@ -222,7 +233,7 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-md bg-[color:var(--amber-cta)] px-4 py-3 text-sm font-semibold text-[color:var(--amber-cta-foreground)] shadow-sm hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {status === "submitting" ? "Sending request…" : "Send Consultation Request"}
       </button>
@@ -231,7 +242,7 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
         {status === "success" && (
           <p
             role="status"
-            className="mt-4 rounded-md border border-[color:var(--forest)]/30 bg-[color:var(--sage)] px-3 py-2 text-sm text-[color:var(--forest)]"
+            className="mt-4 border border-[color:var(--forest)]/25 bg-[color:var(--sage)] px-3 py-2.5 text-sm text-[color:var(--forest)]"
           >
             Your request was received. The company can follow up using the contact information
             provided. Call{" "}
@@ -244,7 +255,7 @@ export function ContactForm({ variant = "hero" }: { variant?: "hero" | "section"
         {status === "error" && (
           <p
             role="alert"
-            className="mt-4 rounded-md border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2 text-sm text-[color:var(--destructive)]"
+            className="mt-4 border border-[color:var(--destructive)]/30 bg-[color:var(--destructive)]/10 px-3 py-2.5 text-sm text-[color:var(--destructive)]"
           >
             The request could not be sent. Review the highlighted fields or call{" "}
             <a href={SITE.phoneHref} className="font-semibold underline">
@@ -276,7 +287,7 @@ function Field({
 
   return (
     <div className={className}>
-      <label htmlFor={inputId} className="block text-sm font-medium text-[color:var(--foreground)]">
+      <label htmlFor={inputId} className={fieldLabelClass}>
         {label}
       </label>
       <input
@@ -290,7 +301,7 @@ function Field({
         placeholder={placeholder}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
-        className="mt-1 min-h-11 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30"
+        className={fieldControlClass}
       />
       {error && (
         <p id={errorId} className="mt-1 text-xs text-[color:var(--destructive)]">
@@ -321,7 +332,7 @@ function SelectField({
 
   return (
     <div>
-      <label htmlFor={inputId} className="block text-sm font-medium text-[color:var(--foreground)]">
+      <label htmlFor={inputId} className={fieldLabelClass}>
         {label}
       </label>
       <select
@@ -331,7 +342,7 @@ function SelectField({
         defaultValue=""
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
-        className="mt-1 min-h-11 w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base focus:border-[color:var(--forest)] focus:outline-none focus:ring-2 focus:ring-[color:var(--forest)]/30"
+        className={fieldControlClass}
       >
         <option value="" disabled>
           Select an option

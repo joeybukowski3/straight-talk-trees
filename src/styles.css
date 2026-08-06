@@ -181,9 +181,12 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
 
   html {
@@ -191,10 +194,190 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.001ms !important;
       transition-duration: 0.001ms !important;
     }
+  }
+}
+
+/*
+ * Homepage / site typography + section rhythm.
+ * Prefer these utilities over one-off heading classes for consistent hierarchy.
+ */
+@layer components {
+  .type-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .type-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.125rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+
+  .type-h3 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .type-body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .type-body-lg {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  @media (min-width: 640px) {
+    .type-body-lg {
+      font-size: 1.125rem;
+    }
+  }
+
+  .type-meta {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .type-meta-sm {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  .section-shell {
+    margin-inline: auto;
+    max-width: 72rem;
+    padding-inline: 1rem;
+  }
+
+  .section-pad {
+    padding-block: 3.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-pad {
+      padding-block: 4rem;
+    }
+  }
+
+  .section-heading {
+    max-width: 42rem;
+  }
+
+  .section-lede {
+    margin-top: 0.875rem;
+    max-width: 42rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    background-color: var(--amber-cta);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--amber-cta-foreground);
+    transition: filter 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--forest);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    border: 1px solid color-mix(in oklab, var(--forest) 35%, transparent);
+    background-color: transparent;
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--forest);
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: color-mix(in oklab, var(--forest) 6%, transparent);
+  }
+
+  .btn-secondary:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--forest);
+  }
+
+  .btn-secondary-on-dark {
+    border-color: color-mix(in oklab, var(--forest-foreground) 40%, transparent);
+    color: var(--forest-foreground);
+  }
+
+  .btn-secondary-on-dark:hover {
+    background-color: color-mix(in oklab, white 6%, transparent);
+  }
+
+  .btn-secondary-on-dark:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--forest),
+      0 0 0 4px white;
+  }
+
+  .btn-primary-on-dark:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--forest),
+      0 0 0 4px white;
   }
 }
