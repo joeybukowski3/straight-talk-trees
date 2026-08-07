@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 import { ContactForm } from "./ContactForm";
+import { TREE_MARK_PATH } from "./TreeMark";
 import { SITE, TRUST_CLAIMS } from "@/lib/site-config";
 import { trackConversion } from "@/lib/analytics";
 
@@ -17,6 +18,20 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden border-b border-[color:var(--forest-deep)] bg-[color:var(--forest-deep)] text-[color:var(--forest-foreground)]"
     >
+      {/* Subtle repeating tree motif — low-opacity texture only */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08]" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hero-tree-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
+              <g transform="translate(6 6)">
+                <path d={TREE_MARK_PATH} fill="currentColor" />
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-tree-pattern)" />
+        </svg>
+      </div>
+
       {/* Subtle tonal separation on desktop only — no wallpaper, gradients, or decorative icons */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 hidden w-[56%] bg-[color:var(--forest)]/40 lg:block"

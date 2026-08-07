@@ -3,7 +3,6 @@ import { EmergencyBar } from "@/components/site/EmergencyBar";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { TrustBar } from "@/components/site/TrustBar";
-import { JumpNav } from "@/components/site/JumpNav";
 import { Services } from "@/components/site/Services";
 import { WhenToCall } from "@/components/site/WhenToCall";
 import { WhyBukowski } from "@/components/site/WhyBukowski";
@@ -104,7 +103,6 @@ function Index() {
       <main id="main-content">
         <Hero />
         <TrustBar />
-        <JumpNav />
         <Services />
         <WhenToCall />
         <WhyBukowski />
