@@ -1,6 +1,6 @@
 # Bukowski Tree Company website
 
-Production domain: `https://bukowskitrees.com`
+Production domain: `https://bukowskitree.com`
 
 TanStack Start, React, TypeScript, Tailwind CSS, Vercel Analytics, and Vercel Speed Insights power the site.
 
@@ -14,11 +14,14 @@ Indexable public routes:
 - `/services`
 - `/about`
 - `/tree-removal`
+- `/fallen-tree-removal`
 - `/emergency-tree-service`
 - `/dangerous-branch-removal`
 - `/tree-trimming`
 - `/storm-cleanup`
 - `/stump-grinding`
+- `/commercial-tree-service`
+- `/land-clearing`
 - `/service-areas`
 - `/contact`
 - `/privacy`
@@ -46,23 +49,25 @@ Open the local URL printed by Vite.
 npm run generate:sitemap
 npx prettier --check .
 npm run lint
+npm run test
+npm run test:e2e
 npm run typecheck
 npm run build
 ```
 
 The GitHub Actions workflow performs strict changed-file Prettier and ESLint checks, keeps the known repository-wide lint baseline visible, builds the production app, and runs TypeScript validation.
 
-A focused test suite covers the Resend contact-form delivery path. Run it with `npm run test`.
+Focused Vitest suites cover contact delivery, service SEO/schema data, service-area data, and the public route inventory. Playwright covers SEO rendering, analytics blocking, and service-area mobile behavior.
 
 ## Environment variables
 
 Production requires these server-only environment variables:
 
 - `RESEND_API_KEY` — Resend API key used to send delivery email.
-- `CONTACT_FROM_EMAIL` — the verified sending address, for example `Jake <jake@bukowskitrees.com>`.
+- `CONTACT_FROM_EMAIL` — the verified sending address, for example `Jake <jake@bukowskitree.com>`.
 - `CONTACT_TO_EMAIL` — one or more destination addresses. Multiple recipients are comma-separated, for example `bukowskitreeco@gmail.com,joeybuk03@gmail.com`. Whitespace around each address is trimmed and empty entries are discarded; at least one recipient is required.
 
-`bukowskitrees.com` must be a verified sending domain in Resend before production delivery will succeed.
+`bukowskitree.com` must be a verified sending domain in Resend before production delivery will succeed.
 
 None of these variables are ever exposed to client-side code — they are read only inside the server function in `src/lib/contact.functions.ts`.
 
@@ -74,7 +79,7 @@ Vercel Analytics and Vercel Speed Insights are initialized once in the root appl
 
 ## SEO and public discovery
 
-- Expected canonical production origin: `https://bukowskitrees.com`.
+- Expected canonical production origin: `https://bukowskitree.com`.
 - Each indexable route defines route-specific title, description, canonical, Open Graph, Twitter, and robots metadata.
 - The homepage contains LocalBusiness/HomeAndConstructionBusiness and FAQ structured data.
 - Dedicated service pages contain Service structured data.
@@ -86,7 +91,7 @@ Vercel Analytics and Vercel Speed Insights are initialized once in the root appl
 ## Vercel setup
 
 1. Import this GitHub repository into Vercel.
-2. Set the production domain to `bukowskitrees.com` and configure the required DNS records. Vercel should redirect `www.bukowskitrees.com` to the apex domain.
+2. Set the production domain to `bukowskitree.com` and configure the required DNS records. Vercel should redirect `www.bukowskitree.com` to the apex domain.
 3. Open **Project Settings → Environment Variables**.
 4. Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` for Production and any Preview environment used for form testing.
 5. Redeploy after changing environment variables.

@@ -66,11 +66,11 @@ function PrivacyPage() {
               </p>
             </section>
             <section>
-              <h2 className="font-display text-2xl font-semibold">Form delivery providers</h2>
+              <h2 className="font-display text-2xl font-semibold">Email delivery provider</h2>
               <p className="mt-2">
-                Form submissions may pass through a private webhook, form-delivery, automation, or
-                email-routing provider used to deliver the inquiry to the company. Those providers
-                may process the submitted information as part of that delivery.
+                Form submissions are sent through an email-delivery provider used to deliver the
+                inquiry to the company. That provider may process the submitted information as part
+                of delivering the request.
               </p>
             </section>
             <section>
