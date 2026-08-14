@@ -37,12 +37,12 @@ test("public service routes expose unique complete metadata and one schema of ea
 
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
-      `https://bukowskitree.com${path}`,
+      `https://bukowskitrees.com${path}`,
     );
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
       "content",
-      `https://bukowskitree.com${path}`,
+      `https://bukowskitrees.com${path}`,
     );
     await expect(page.locator('meta[name="twitter:title"]')).toHaveCount(1);
     await expect(page.locator('meta[name="twitter:description"]')).toHaveCount(1);
@@ -54,9 +54,9 @@ test("public service routes expose unique complete metadata and one schema of ea
     expect(schemas.filter((schema) => schema["@type"] === "BreadcrumbList")).toHaveLength(1);
     expect(schemas.find((schema) => schema["@type"] === "Service")).toMatchObject({
       name: serviceName,
-      url: `https://bukowskitree.com${path}`,
+      url: `https://bukowskitrees.com${path}`,
     });
-    expect(await page.content()).not.toContain("bukowskitrees.com");
+    expect(await page.content()).not.toContain("bukowskitree.com");
   }
 });
 
@@ -77,5 +77,41 @@ test("homepage and services hub use the dedicated expansion-page destinations", 
         page.locator(`a[href="${href}"]`).filter({ hasText: name }).first(),
       ).toHaveAttribute("href", href);
     }
+  }
+});
+
+test("remaining public routes use the production host for absolute SEO URLs", async ({ page }) => {
+  for (const path of [
+    "/",
+    "/services",
+    "/about",
+    "/service-areas",
+    "/contact",
+    "/privacy",
+    "/terms",
+  ]) {
+    await page.goto(path);
+
+    const canonical =
+      path === "/" ? "https://bukowskitrees.com" : `https://bukowskitrees.com${path}`;
+    const schemas = await page
+      .locator('script[type="application/ld+json"]')
+      .allTextContents()
+      .then((values) => values.map((value) => JSON.parse(value)));
+
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", canonical);
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", canonical);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      "https://bukowskitrees.com/houston-tree-hero.jpg",
+    );
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+      "content",
+      "https://bukowskitrees.com/houston-tree-hero.jpg",
+    );
+    if (schemas.length > 0) {
+      expect(JSON.stringify(schemas)).toContain("https://bukowskitrees.com");
+    }
+    expect(await page.content()).not.toContain("bukowskitree.com");
   }
 });

@@ -24,7 +24,7 @@ const EXPECTED_PUBLIC_ROUTES = [
 
 describe("public route inventory", () => {
   it("contains the complete indexable route set without city pages", () => {
-    expect(PRODUCTION_URL).toBe("https://bukowskitree.com");
+    expect(PRODUCTION_URL).toBe("https://bukowskitrees.com");
     expect(PUBLIC_ROUTES).toEqual(EXPECTED_PUBLIC_ROUTES);
     expect(new Set(PUBLIC_ROUTES).size).toBe(PUBLIC_ROUTES.length);
     expect(PUBLIC_ROUTES.some((path: string) => path.startsWith("/tree-service-"))).toBe(false);
@@ -38,6 +38,6 @@ describe("public route inventory", () => {
     );
 
     expect(sitemapUrls).toEqual(expectedUrls);
-    expect(sitemap).not.toContain("bukowskitrees.com");
+    expect(sitemap).not.toContain("bukowskitree.com");
   });
 });

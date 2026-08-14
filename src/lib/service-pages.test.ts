@@ -44,7 +44,7 @@ describe("fallen tree removal service page", () => {
 
     expect(head.links).toContainEqual({
       rel: "canonical",
-      href: "https://bukowskitree.com/fallen-tree-removal",
+      href: "https://bukowskitrees.com/fallen-tree-removal",
     });
     expect(head.meta).toEqual(
       expect.arrayContaining([
@@ -52,7 +52,7 @@ describe("fallen tree removal service page", () => {
         { name: "robots", content: "index, follow" },
         {
           property: "og:url",
-          content: "https://bukowskitree.com/fallen-tree-removal",
+          content: "https://bukowskitrees.com/fallen-tree-removal",
         },
         { name: "twitter:card", content: "summary_large_image" },
       ]),
@@ -66,26 +66,26 @@ describe("fallen tree removal service page", () => {
     expect(service).toMatchObject({
       "@type": "Service",
       name: "Fallen Tree Removal",
-      url: "https://bukowskitree.com/fallen-tree-removal",
+      url: "https://bukowskitrees.com/fallen-tree-removal",
     });
     expect(breadcrumbs.itemListElement).toEqual([
       {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://bukowskitree.com/",
+        item: "https://bukowskitrees.com/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://bukowskitree.com/services",
+        item: "https://bukowskitrees.com/services",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Fallen Tree Removal",
-        item: "https://bukowskitree.com/fallen-tree-removal",
+        item: "https://bukowskitrees.com/fallen-tree-removal",
       },
     ]);
   });
@@ -129,7 +129,7 @@ describe.each(NEW_SERVICE_CASES)("$serviceName service page", (serviceCase) => {
   it("creates canonical metadata, service schema, and matching visible breadcrumb schema", () => {
     const page = SERVICE_PAGES[serviceCase.slug];
     const path = `/${serviceCase.slug}`;
-    const url = `https://bukowskitree.com${path}`;
+    const url = `https://bukowskitrees.com${path}`;
     const head = pageHead(path, serviceCase.title, page.description, page.serviceName);
 
     expect(head.links).toContainEqual({ rel: "canonical", href: url });
@@ -149,13 +149,13 @@ describe.each(NEW_SERVICE_CASES)("$serviceName service page", (serviceCase) => {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://bukowskitree.com/",
+        item: "https://bukowskitrees.com/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://bukowskitree.com/services",
+        item: "https://bukowskitrees.com/services",
       },
       {
         "@type": "ListItem",
@@ -192,7 +192,7 @@ describe("service-page SEO inventory", () => {
 
   it.each(pages)("provides complete shared metadata for $slug", (page) => {
     const path = `/${page.slug}`;
-    const url = `https://bukowskitree.com${path}`;
+    const url = `https://bukowskitrees.com${path}`;
     const head = pageHead(path, page.title, page.description, page.serviceName);
 
     expect(head.links).toContainEqual({ rel: "canonical", href: url });

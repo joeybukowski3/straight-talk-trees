@@ -10,7 +10,7 @@ import {
 describe("service-area SEO", () => {
   it("uses the permanent canonical domain and complete social metadata", () => {
     const head = serviceAreaPageHead();
-    const canonical = "https://bukowskitree.com/service-areas";
+    const canonical = "https://bukowskitrees.com/service-areas";
 
     expect(head.links).toContainEqual({ rel: "canonical", href: canonical });
     expect(head.meta).toEqual(
@@ -31,15 +31,15 @@ describe("service-area SEO", () => {
     expect(schema).toEqual(SERVICE_AREA_BUSINESS_SCHEMA);
     expect(schema).toMatchObject({
       "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-      "@id": "https://bukowskitree.com/#business",
-      url: "https://bukowskitree.com",
+      "@id": "https://bukowskitrees.com/#business",
+      url: "https://bukowskitrees.com",
       areaServed: {
         "@type": "GeoCircle",
         geoRadius: SERVICE_AREA_RADIUS_METRES,
         description: SERVICE_AREA_SCHEMA_DESCRIPTION,
       },
     });
-    expect(JSON.stringify(schema)).not.toContain("bukowskitrees.com");
+    expect(JSON.stringify(schema)).not.toContain("bukowskitree.com");
     expect(schema).not.toHaveProperty("address");
     expect(schema).not.toHaveProperty("aggregateRating");
   });

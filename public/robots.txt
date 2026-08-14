@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bukowskitree.com/sitemap.xml
+Sitemap: https://bukowskitrees.com/sitemap.xml
