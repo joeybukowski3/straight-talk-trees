@@ -44,6 +44,7 @@ export const SERVICE_PAGES = {
       { label: "Emergency Tree Service", href: "/emergency-tree-service" },
       { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
       { label: "Storm Cleanup", href: "/storm-cleanup" },
+      { label: "Land and Lot Clearing", href: "/land-clearing" },
     ],
   },
   "emergency-tree-service": {
@@ -195,7 +196,7 @@ export const SERVICE_PAGES = {
     approach: [
       "Start with the areas affecting safety, access, structures, or active property use.",
       "Review fallen material, damaged trees, hanging limbs, and access conditions.",
-      "Define the cleanup and removal scope before work begins.",
+      "Define which trees, branches, brush, and related debris are included in the cleanup scope before work begins.",
       "Address additional trimming, stump grinding, or future tree work separately when it is outside the immediate cleanup scope.",
     ],
     considerations: [
@@ -208,6 +209,7 @@ export const SERVICE_PAGES = {
       { label: "Emergency Tree Service", href: "/emergency-tree-service" },
       { label: "Tree Removal", href: "/tree-removal" },
       { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
+      { label: "Land and Lot Clearing", href: "/land-clearing" },
     ],
   },
   "stump-grinding": {
@@ -237,6 +239,74 @@ export const SERVICE_PAGES = {
     ],
     related: [
       { label: "Tree Removal", href: "/tree-removal" },
+      { label: "Land and Lot Clearing", href: "/land-clearing" },
+      { label: "Storm Cleanup", href: "/storm-cleanup" },
+    ],
+  },
+  "commercial-tree-service": {
+    slug: "commercial-tree-service",
+    serviceName: "Commercial Tree Service",
+    title: "Commercial Tree Service in Houston and Southeast Texas",
+    description:
+      "Commercial tree removal, trimming, storm cleanup, clearing, and related tree service for businesses and managed properties in Houston and Southeast Texas.",
+    intro:
+      "Bukowski Tree Company can discuss tree work for businesses, commercial properties, property managers, landlords, apartment or multi-unit properties, and HOA or community properties. The appropriate scope depends on the tree concern, property access, surrounding structures, urgency, and an onsite evaluation when needed.",
+    situations: [
+      "A commercial or managed property needs standing-tree removal or stump grinding discussed.",
+      "Broken, hanging, or fallen material is affecting access, parking, buildings, fences, or commonly used areas.",
+      "Trees need trimming for clearance around structures, drives, walkways, or other active parts of the property.",
+      "Storm damage has left trees, limbs, brush, or debris within the requested cleanup area.",
+      "Tree, brush, or vegetation clearing is needed for property access, cleanup, land management, or preparation for future use.",
+    ],
+    approach: [
+      "Call or request a consultation with the general property location, type of work, urgency, and any known access considerations.",
+      "Review the visible tree concern, surrounding property, occupied areas, access, and the amount of material involved.",
+      "Define the specific removal, trimming, cleanup, stump, or clearing work included in the proposed scope.",
+      "Confirm recommendations and pricing before scheduling the agreed work.",
+    ],
+    considerations: [
+      "Property access, nearby buildings, vehicles, pedestrian areas, fences, and other site conditions can affect the work plan.",
+      "Different areas or types of work may need to be discussed as separate scopes rather than assumed to be included together.",
+      "For an actively dangerous condition, electrical hazard, or immediate life-safety concern, keep people clear and contact the appropriate emergency service or utility provider when necessary.",
+    ],
+    related: [
+      { label: "Tree Removal", href: "/tree-removal" },
+      { label: "Fallen Tree Removal", href: "/fallen-tree-removal" },
+      { label: "Tree Trimming", href: "/tree-trimming" },
+      { label: "Storm Cleanup", href: "/storm-cleanup" },
+      { label: "Land and Lot Clearing", href: "/land-clearing" },
+    ],
+  },
+  "land-clearing": {
+    slug: "land-clearing",
+    serviceName: "Land and Lot Clearing",
+    title: "Land and Lot Clearing in Houston and Southeast Texas",
+    description:
+      "Tree, brush, and vegetation clearing for property cleanup, access, land management, and preparation for future use in Houston and Southeast Texas.",
+    intro:
+      "Bukowski Tree Company handles tree, brush, and vegetation clearing associated with property cleanup, access, land management, or preparation for future use. Each lot or clearing request is reviewed for the requested area, existing vegetation, access, nearby property features, and the cleanup included in the proposed scope.",
+    situations: [
+      "Trees, brush, or dense vegetation are limiting access to part of a property.",
+      "An overgrown lot needs selected vegetation cleared and the agreed material cleaned up.",
+      "Tree and brush clearing is needed before a future property use or construction project can be considered.",
+      "A property owner or manager wants to open a usable area for cleanup or land-management purposes.",
+      "Storm-damaged vegetation or accumulated tree and brush material is part of a broader clearing request.",
+    ],
+    approach: [
+      "Provide the property location, general area to be cleared, intended objective, and any known access considerations.",
+      "Review the requested boundaries, trees or vegetation to remain, visible obstacles, utility concerns, and equipment access.",
+      "Define which trees, brush, vegetation, stumps, and related debris are included before work is scheduled.",
+      "Confirm the tree-service and vegetation-clearing scope, cleanup expectations, and pricing after an onsite evaluation when needed.",
+    ],
+    considerations: [
+      "Clearing scope can depend on acreage or area involved, vegetation density, terrain, access, nearby structures, and material volume.",
+      "This service is limited to agreed tree, brush, vegetation, and related cleanup work; it does not imply excavation, grading, demolition, drainage, utility work, or full site preparation.",
+      "Property boundaries, underground or overhead utilities, retained vegetation, and the intended future use should be identified before the scope is finalized.",
+    ],
+    related: [
+      { label: "Commercial Tree Service", href: "/commercial-tree-service" },
+      { label: "Tree Removal", href: "/tree-removal" },
+      { label: "Stump Grinding", href: "/stump-grinding" },
       { label: "Storm Cleanup", href: "/storm-cleanup" },
     ],
   },

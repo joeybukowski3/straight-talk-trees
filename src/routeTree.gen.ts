@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CommercialTreeServiceRouteImport } from './routes/commercial-tree-service'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DangerousBranchRemovalRouteImport } from './routes/dangerous-branch-removal'
 import { Route as EmergencyTreeServiceRouteImport } from './routes/emergency-tree-service'
 import { Route as FallenTreeRemovalRouteImport } from './routes/fallen-tree-removal'
+import { Route as LandClearingRouteImport } from './routes/land-clearing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServiceAreasRouteImport } from './routes/service-areas'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -32,6 +34,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialTreeServiceRoute = CommercialTreeServiceRouteImport.update({
+  id: '/commercial-tree-service',
+  path: '/commercial-tree-service',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -52,6 +59,11 @@ const EmergencyTreeServiceRoute = EmergencyTreeServiceRouteImport.update({
 const FallenTreeRemovalRoute = FallenTreeRemovalRouteImport.update({
   id: '/fallen-tree-removal',
   path: '/fallen-tree-removal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandClearingRoute = LandClearingRouteImport.update({
+  id: '/land-clearing',
+  path: '/land-clearing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -98,10 +110,12 @@ const TreeTrimmingRoute = TreeTrimmingRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commercial-tree-service': typeof CommercialTreeServiceRoute
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
   '/emergency-tree-service': typeof EmergencyTreeServiceRoute
   '/fallen-tree-removal': typeof FallenTreeRemovalRoute
+  '/land-clearing': typeof LandClearingRoute
   '/privacy': typeof PrivacyRoute
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
@@ -114,10 +128,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commercial-tree-service': typeof CommercialTreeServiceRoute
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
   '/emergency-tree-service': typeof EmergencyTreeServiceRoute
   '/fallen-tree-removal': typeof FallenTreeRemovalRoute
+  '/land-clearing': typeof LandClearingRoute
   '/privacy': typeof PrivacyRoute
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
@@ -131,10 +147,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commercial-tree-service': typeof CommercialTreeServiceRoute
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
   '/emergency-tree-service': typeof EmergencyTreeServiceRoute
   '/fallen-tree-removal': typeof FallenTreeRemovalRoute
+  '/land-clearing': typeof LandClearingRoute
   '/privacy': typeof PrivacyRoute
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
@@ -149,10 +167,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/commercial-tree-service'
     | '/contact'
     | '/dangerous-branch-removal'
     | '/emergency-tree-service'
     | '/fallen-tree-removal'
+    | '/land-clearing'
     | '/privacy'
     | '/service-areas'
     | '/services'
@@ -165,10 +185,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/commercial-tree-service'
     | '/contact'
     | '/dangerous-branch-removal'
     | '/emergency-tree-service'
     | '/fallen-tree-removal'
+    | '/land-clearing'
     | '/privacy'
     | '/service-areas'
     | '/services'
@@ -181,10 +203,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/commercial-tree-service'
     | '/contact'
     | '/dangerous-branch-removal'
     | '/emergency-tree-service'
     | '/fallen-tree-removal'
+    | '/land-clearing'
     | '/privacy'
     | '/service-areas'
     | '/services'
@@ -198,10 +222,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CommercialTreeServiceRoute: typeof CommercialTreeServiceRoute
   ContactRoute: typeof ContactRoute
   DangerousBranchRemovalRoute: typeof DangerousBranchRemovalRoute
   EmergencyTreeServiceRoute: typeof EmergencyTreeServiceRoute
   FallenTreeRemovalRoute: typeof FallenTreeRemovalRoute
+  LandClearingRoute: typeof LandClearingRoute
   PrivacyRoute: typeof PrivacyRoute
   ServiceAreasRoute: typeof ServiceAreasRoute
   ServicesRoute: typeof ServicesRoute
@@ -226,6 +252,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial-tree-service': {
+      id: '/commercial-tree-service'
+      path: '/commercial-tree-service'
+      fullPath: '/commercial-tree-service'
+      preLoaderRoute: typeof CommercialTreeServiceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -254,6 +287,13 @@ declare module '@tanstack/react-router' {
       path: '/fallen-tree-removal'
       fullPath: '/fallen-tree-removal'
       preLoaderRoute: typeof FallenTreeRemovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/land-clearing': {
+      id: '/land-clearing'
+      path: '/land-clearing'
+      fullPath: '/land-clearing'
+      preLoaderRoute: typeof LandClearingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -318,10 +358,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CommercialTreeServiceRoute: CommercialTreeServiceRoute,
   ContactRoute: ContactRoute,
   DangerousBranchRemovalRoute: DangerousBranchRemovalRoute,
   EmergencyTreeServiceRoute: EmergencyTreeServiceRoute,
   FallenTreeRemovalRoute: FallenTreeRemovalRoute,
+  LandClearingRoute: LandClearingRoute,
   PrivacyRoute: PrivacyRoute,
   ServiceAreasRoute: ServiceAreasRoute,
   ServicesRoute: ServicesRoute,
