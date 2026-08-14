@@ -90,7 +90,7 @@ Vercel Analytics and Vercel Speed Insights are initialized once in the root appl
 3. Open **Project Settings → Environment Variables**.
 4. Add `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` for Production and any Preview environment used for form testing.
 5. Redeploy after changing environment variables.
-6. Vercel Analytics and Speed Insights become available in the project dashboard after a production deployment receives traffic. No Google Analytics identifier is configured.
+6. Vercel Analytics and Speed Insights become available in the project dashboard after a production deployment receives traffic. Google Analytics is configured with Measurement ID `G-B3FP94XWK3`.
 
 ## Contact-form verification
 
