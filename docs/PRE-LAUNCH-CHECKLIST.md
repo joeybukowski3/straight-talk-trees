@@ -1,60 +1,39 @@
 # Bukowski Tree Company Pre-Launch Checklist
 
-This checklist separates code-complete work from operational launch work that requires production access, a connected public domain, or external business accounts.
+Use this checklist to separate code-complete work from tasks that require the permanent domain, production credentials, or external business accounts.
 
 ## Completed in code
 
-- Shared Bukowski Tree Company header, footer, brand palette, typography, focus styles, and responsive layout conventions.
-- Homepage conversion sections and mobile quick-contact behavior.
-- Dedicated service pages for tree removal, emergency tree service, dangerous branch removal, tree trimming, storm cleanup, and stump grinding.
-- Dedicated `/services`, `/about`, `/service-areas`, and `/contact` routes.
-- Privacy policy and website terms.
-- Unique route metadata, canonical URLs, Open Graph metadata, Twitter metadata, and index/follow directives for indexable pages.
-- LocalBusiness/HomeAndConstructionBusiness structured data on the homepage.
-- Service structured data on dedicated service pages.
-- FAQ structured data matching the visible homepage FAQ.
-- Visible breadcrumb navigation with matching BreadcrumbList structured data on service, service-area, contact, services, and about pages.
-- Branded 404 and route-error experiences with safe recovery paths.
-- Branded SVG favicon with no Lovable branding.
-- Existing real site image used for social metadata; no fabricated people, crews, reviews, or worksite imagery.
-- Centralized public-route list and build-generated sitemap without fabricated last-modified dates.
-- `robots.txt` referencing `https://bukowskitrees.com/sitemap.xml`.
-- Vercel Analytics and Speed Insights integration.
-- Anonymous conversion event tracking without consultation-form values.
-- Server-side contact-form validation, honeypot handling, timeout handling, and direct Resend email delivery.
-- Keyboard-accessible navigation, skip links, visible focus states, native form labels, accessible status messages, and reduced-motion handling.
-- Safe-area-aware mobile action bar and mobile bottom spacing where the fixed bar is present.
-- GitHub Actions checks for changed-file Prettier, changed-file ESLint, repository lint baseline, production build, and TypeScript.
+- All intended public routes, including nine dedicated service pages, are implemented with the shared site design and conversion flow.
+- Each indexable route has unique metadata, an absolute `https://bukowskitree.com` canonical, Open Graph and Twitter metadata, and `index, follow`.
+- LocalBusiness/HomeAndConstructionBusiness, Service, FAQPage, BreadcrumbList, and service-area JSON-LD are implemented where appropriate using supported facts.
+- `robots.txt` permits normal crawling and references `https://bukowskitree.com/sitemap.xml`.
+- The sitemap is generated from the centralized public-route list and contains the 16 intended indexable routes.
+- Header, footer, service cards, related services, breadcrumbs, consultation anchors, phone links, and mobile actions resolve to valid destinations.
+- The consultation form has client and server validation, a honeypot, bounded input lengths, safe errors, success/failure states, and direct email delivery through Resend.
+- Vercel Analytics, Speed Insights, Google Analytics, and anonymous conversion events are implemented without attaching consultation-form values to event data.
+- Analytics-blocked Playwright coverage protects automated browser traffic from reaching Google Analytics or Google Tag Manager.
+- Responsive, keyboard, form, breadcrumb, table, tab, live-region, 404, and route-error behavior has been audited at representative mobile and desktop widths.
+- The favicon and social image exist in public assets and contain no public-facing Lovable branding.
 
-## Must be completed before public launch
+## Must happen when domain is connected
 
-- Connect `bukowskitrees.com` to the production Vercel project.
-- Configure the required DNS records for the production domain.
-- Configure the production `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` as private server-side environment variables, and confirm `bukowskitrees.com` is verified in Resend.
-- Confirm the production form reaches the intended private business destination(s).
-- Run one controlled successful production form submission and verify the success state.
-- Run a controlled failure-path test in a safe environment and verify the phone fallback.
-- Confirm all public business claims with the owner, including insured status, locally owned positioning, free consultations, fast scheduling, 24/7 emergency-call availability, Houston and Southeast Texas coverage, residential and commercial service, and cleanup/debris-removal language.
-- Verify HTTPS and the preferred production host after the domain is connected.
-- Inspect live canonical URLs and confirm they resolve to the preferred production host.
-- Confirm `https://bukowskitrees.com/robots.txt` loads successfully.
-- Confirm `https://bukowskitrees.com/sitemap.xml` loads successfully as XML and contains only intended public routes.
-- Verify Vercel Analytics and Speed Insights receive production traffic without personal form information.
-- Test every production phone link on mobile and desktop-capable calling environments.
-- Review all public routes on representative mobile and desktop viewport sizes.
-- Verify the sticky mobile action bar does not cover content and its consultation action reaches the correct form or contact route.
-- Verify social previews on major sharing debuggers. The existing hero image is a valid fallback; a purpose-built 1200×630 brand image remains an optional improvement.
-- Confirm the favicon and page titles display correctly in production browser tabs.
+- Connect `bukowskitree.com` to the production Vercel project.
+- Configure DNS for the apex and preferred `www` redirect.
+- Confirm HTTPS is valid and the preferred host redirects consistently.
+- Configure production `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` as server-only environment variables.
+- Verify `bukowskitree.com` as an authorized sending domain in Resend.
+- Redeploy after production environment variables are configured.
+- Submit one controlled live consultation and confirm delivery to the intended private recipient, the on-page success state, and absence of personal data in analytics.
+- Run one safe failure-path check and confirm the phone fallback without exposing configuration details.
+- Inspect live canonical, Open Graph, robots, and sitemap output on the permanent HTTPS domain.
 
-## After public launch
+## After launch
 
-- Add and verify the production property in Google Search Console.
-- Submit the production sitemap in Google Search Console.
-- Add and verify the site in Bing Webmaster Tools and submit the sitemap.
+- Verify the site in Google Search Console and submit `https://bukowskitree.com/sitemap.xml`.
+- Verify the site in Bing Webmaster Tools and submit the sitemap.
 - Create, claim, or complete the Google Business Profile using verified business information only.
-- Review acquisition channels after real traffic and lead data are available.
-- Maintain consistent business name, phone number, service area, and other verified information across legitimate local citations.
-- Replace or expand website imagery with real project photos when suitable photos are available and permission is confirmed.
-- Add genuine customer reviews only after they exist and can be represented accurately.
-- Plan location-specific pages only after actual service areas are confirmed; do not create thin or fabricated city pages.
-- Revisit the optional custom 1200×630 social-sharing image using real brand assets.
+- Monitor indexing, crawl errors, analytics, conversions, and live form delivery.
+- Build a process for requesting and publishing genuine customer reviews.
+- Collect approved, real project photos for future site and social-preview improvements.
+- Research the first location pages using real query, service-area, and lead data before creating any city-specific content.
