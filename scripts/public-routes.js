@@ -1,4 +1,4 @@
-export const PRODUCTION_URL = "https://bukowskitree.com";
+export const PRODUCTION_URL = "https://bukowskitrees.com";
 
 export const PUBLIC_ROUTES = [
   "/",
