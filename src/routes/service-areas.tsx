@@ -10,7 +10,7 @@ import { MobileActionBar } from "@/components/site/MobileActionBar";
 import { SkipLink } from "@/components/site/SkipLink";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { trackConversion } from "@/lib/analytics";
-import { pageHead } from "@/lib/service-pages";
+import { serviceAreaPageHead } from "@/lib/service-area-page";
 import {
   DEFAULT_ZIP_GROUP,
   LOCAL_FOCUS_NAMES,
@@ -19,54 +19,39 @@ import {
   ZIP_GROUPS,
 } from "@/lib/service-areas";
 import { SITE } from "@/lib/site-config";
-
-const TITLE = "Houston and Southeast Texas Tree Service Areas | Bukowski Tree Company";
-const DESCRIPTION =
-  "Bukowski Tree Company serves Houston and Southeast Texas. Call or submit your ZIP code or general location to confirm service availability for your property.";
 const BREADCRUMBS = [
   { label: "Home", href: "/" },
   { label: "Service Areas", href: "/service-areas" },
 ] as const;
+const SERVICE_LINK_GROUPS = [
+  {
+    title: "Urgent tree concerns",
+    links: [
+      { label: "Emergency Tree Service", href: "/emergency-tree-service" },
+      { label: "Fallen Tree Removal", href: "/fallen-tree-removal" },
+      { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
+      { label: "Storm Cleanup", href: "/storm-cleanup" },
+    ],
+  },
+  {
+    title: "Removal and maintenance",
+    links: [
+      { label: "Tree Removal", href: "/tree-removal" },
+      { label: "Tree Trimming", href: "/tree-trimming" },
+      { label: "Stump Grinding", href: "/stump-grinding" },
+    ],
+  },
+  {
+    title: "Larger property work",
+    links: [
+      { label: "Commercial Tree Service", href: "/commercial-tree-service" },
+      { label: "Land and Lot Clearing", href: "/land-clearing" },
+    ],
+  },
+] as const;
 
 export const Route = createFileRoute("/service-areas")({
-  head: () => {
-    const head = pageHead("/service-areas", TITLE, DESCRIPTION);
-    return {
-      ...head,
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-            "@id": `${SITE.url}/#business`,
-            name: SITE.businessName,
-            url: SITE.url,
-            telephone: SITE.phoneE164,
-            areaServed: {
-              "@type": "GeoCircle",
-              geoMidpoint: {
-                "@type": "GeoCoordinates",
-                latitude: 29.661024,
-                longitude: -95.228361,
-              },
-              geoRadius: "160934 metres",
-              description:
-                "Approximate service range from South Houston; availability varies by job.",
-            },
-            knowsAbout: [
-              "Tree service",
-              "Tree removal",
-              "Tree trimming",
-              "Emergency tree service",
-              "Storm cleanup",
-              "Dangerous branch and limb removal",
-            ],
-          }),
-        },
-      ],
-    };
-  },
+  head: () => serviceAreaPageHead(),
   component: ServiceAreasPage,
 });
 
@@ -131,7 +116,15 @@ function ServiceAreasPage() {
   }, [normalizedQuery, zipGroup]);
 
   const resultCount = activeTab === "cities" ? filteredAreas.length : visibleZips.length;
-  const resultLabel = `${resultCount} ${activeTab === "cities" ? "locations" : "ZIP codes"} shown`;
+  const resultNoun =
+    activeTab === "cities"
+      ? resultCount === 1
+        ? "location"
+        : "locations"
+      : resultCount === 1
+        ? "ZIP code"
+        : "ZIP codes";
+  const resultLabel = `${resultCount} ${resultNoun} shown`;
 
   return (
     <>
@@ -152,9 +145,9 @@ function ServiceAreasPage() {
               Tree Service Areas Around Houston &amp; Southeast Texas
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
-              Bukowski Tree Company works from South Houston into nearby Houston-area and Southeast
-              Texas communities. Service can extend roughly 100 miles depending on the job, travel,
-              scheduling, property access, and urgency.
+              Our core service area is centered on South Houston and southeast Houston, with an
+              extended reach of roughly 100 miles for worthwhile projects across the broader Houston
+              and Southeast Texas region.
             </p>
           </div>
         </section>
@@ -162,11 +155,12 @@ function ServiceAreasPage() {
         <section className="border-b border-[color:var(--border)] bg-white">
           <div className="mx-auto max-w-[1200px] px-4 py-8 sm:py-10">
             <h2 className="font-display text-2xl font-semibold text-[color:var(--forest)] sm:text-3xl">
-              Serving South Houston and Nearby Communities
+              Core Service Area
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-[color:var(--foreground)]/70">
-              These south and southeast Houston communities are closest to our day-to-day service
-              area.
+              These Houston and southeast Houston communities are closest to our South Houston and
+              University of Houston-area base. They are generally the most convenient for routine
+              scheduling, subject to the job, access, urgency, and current availability.
             </p>
             <ul className="mt-5 grid grid-cols-2 gap-x-5 gap-y-2 text-sm sm:grid-cols-3 lg:grid-cols-5">
               {LOCAL_FOCUS_NAMES.map((name) => (
@@ -181,9 +175,41 @@ function ServiceAreasPage() {
           </div>
         </section>
 
+        <section className="border-b border-[color:var(--border)] bg-[color:var(--sage)]/45">
+          <div className="mx-auto grid max-w-[1200px] gap-6 px-4 py-8 sm:py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <h2 className="font-display text-2xl font-semibold text-[color:var(--forest)] sm:text-3xl">
+                Extended Service Area
+              </h2>
+              <p className="mt-3 max-w-3xl leading-7 text-[color:var(--foreground)]/80">
+                For worthwhile tree-service and clearing projects, Bukowski Tree Company can travel
+                roughly 100 miles from South Houston into the broader Houston and Southeast Texas
+                region. Extended-area availability depends on job scope, travel, scheduling,
+                property access, and urgency.
+              </p>
+            </div>
+            <div className="rounded-md border border-[color:var(--border)] bg-white p-5">
+              <h3 className="font-display text-xl font-semibold text-[color:var(--forest)]">
+                Confirm your property location
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-[color:var(--foreground)]/75">
+                Search the full directory below, then call or submit your ZIP code and requested
+                work so availability can be confirmed for the property.
+              </p>
+              <a
+                href="#service-area-directory"
+                className="mt-4 inline-flex min-h-11 items-center rounded-md border border-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+              >
+                Search cities and ZIP codes
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section
+          id="service-area-directory"
           aria-labelledby="directory-heading"
-          className="mx-auto max-w-[1200px] px-4 py-10 sm:py-14"
+          className="mx-auto max-w-[1200px] scroll-mt-24 px-4 py-10 sm:py-14"
         >
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
@@ -194,7 +220,8 @@ function ServiceAreasPage() {
                 Service-Area Directory
               </h2>
               <p className="mt-2 text-sm leading-6 text-[color:var(--foreground)]/70">
-                Listed locations are a practical guide, not a guaranteed service boundary.
+                Search the full core and extended directory by city, community, county, or ZIP code.
+                Listings are a practical coverage guide, not a guaranteed service boundary.
               </p>
             </div>
             <p
@@ -283,7 +310,7 @@ function ServiceAreasPage() {
                             <span className="sr-only sm:hidden">County: </span>
                             {area.counties.join(", ")}
                           </td>
-                          <td className="block text-right font-mono text-xs leading-5 sm:table-cell sm:px-3 sm:py-2.5 sm:text-left sm:text-sm">
+                          <td className="block min-w-0 break-words text-right font-mono text-xs leading-5 sm:table-cell sm:px-3 sm:py-2.5 sm:text-left sm:text-sm">
                             <span className="sr-only sm:hidden">ZIP codes: </span>
                             {area.zipCodes.join(", ")}
                           </td>
@@ -306,7 +333,7 @@ function ServiceAreasPage() {
                   </p>
                   <div
                     className="mt-2 flex max-w-full gap-2 overflow-x-auto pb-1"
-                    role="toolbar"
+                    role="group"
                     aria-labelledby="zip-group-label"
                   >
                     {ZIP_GROUPS.map((group) => (
@@ -357,11 +384,11 @@ function ServiceAreasPage() {
                           >
                             {entry.zipCode}
                           </th>
-                          <td className="block min-w-0 font-medium sm:table-cell sm:px-3 sm:py-2.5">
+                          <td className="block min-w-0 break-words font-medium sm:table-cell sm:px-3 sm:py-2.5">
                             <span className="sr-only sm:hidden">Communities: </span>
                             {entry.communities.join(", ")}
                           </td>
-                          <td className="block text-xs text-[color:var(--foreground)]/70 sm:table-cell sm:px-3 sm:py-2.5 sm:text-sm">
+                          <td className="block min-w-0 break-words text-xs text-[color:var(--foreground)]/70 sm:table-cell sm:px-3 sm:py-2.5 sm:text-sm">
                             <span className="sr-only sm:hidden">Counties: </span>
                             {entry.counties.join(", ")}
                           </td>
@@ -378,45 +405,35 @@ function ServiceAreasPage() {
         </section>
 
         <section className="border-y border-[color:var(--border)] bg-[color:var(--sage)]/45">
-          <div className="mx-auto max-w-[1200px] px-4 py-8">
+          <div className="mx-auto max-w-[1200px] px-4 py-10">
             <h2 className="font-display text-2xl font-semibold text-[color:var(--forest)]">
               Tree work available across the area
             </h2>
             <p className="mt-2 max-w-4xl text-sm leading-6 text-[color:var(--foreground)]/75">
-              Call for tree removal, tree trimming, emergency tree service, storm cleanup, stump
-              grinding, or dangerous branch and limb removal.
+              Review the service that best matches the property concern, then confirm availability
+              for the location and requested scope.
             </p>
-            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-[color:var(--forest)]">
-              <a
-                href="/tree-removal"
-                className="underline decoration-[color:var(--amber-cta)] decoration-2 underline-offset-4"
-              >
-                Tree Removal
-              </a>
-              <a
-                href="/tree-trimming"
-                className="underline decoration-[color:var(--amber-cta)] decoration-2 underline-offset-4"
-              >
-                Tree Trimming
-              </a>
-              <a
-                href="/emergency-tree-service"
-                className="underline decoration-[color:var(--amber-cta)] decoration-2 underline-offset-4"
-              >
-                Emergency Tree Service
-              </a>
-              <a
-                href="/storm-cleanup"
-                className="underline decoration-[color:var(--amber-cta)] decoration-2 underline-offset-4"
-              >
-                Storm Cleanup
-              </a>
-              <a
-                href="/dangerous-branch-removal"
-                className="underline decoration-[color:var(--amber-cta)] decoration-2 underline-offset-4"
-              >
-                Dangerous Limb Removal
-              </a>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {SERVICE_LINK_GROUPS.map((group) => (
+                <div
+                  key={group.title}
+                  className="rounded-md border border-[color:var(--border)] bg-white p-4"
+                >
+                  <h3 className="font-semibold text-[color:var(--forest)]">{group.title}</h3>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          className="inline-flex min-h-11 items-center rounded-sm font-semibold text-[color:var(--forest)] underline decoration-[color:var(--amber-cta)] decoration-2 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </section>

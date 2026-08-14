@@ -335,33 +335,6 @@ export function pageHead(path: string, title: string, description: string, servi
             },
           }),
         },
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: absoluteUrl("/"),
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Services",
-                item: absoluteUrl("/services"),
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: serviceName,
-                item: url,
-              },
-            ],
-          }),
-        },
       ]
     : undefined;
 
