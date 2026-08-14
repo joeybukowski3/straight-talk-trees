@@ -20,7 +20,7 @@ const BREADCRUMBS = [
 const SERVICE_LINKS: Record<string, string> = {
   "Tree Removal": "/tree-removal",
   "Dangerous Branch and Limb Removal": "/dangerous-branch-removal",
-  "Fallen-Tree Removal": "/tree-removal",
+  "Fallen Tree Removal": "/fallen-tree-removal",
   "Emergency Tree Service": "/emergency-tree-service",
   "Storm Cleanup": "/storm-cleanup",
   "Tree Trimming and Pruning": "/tree-trimming",

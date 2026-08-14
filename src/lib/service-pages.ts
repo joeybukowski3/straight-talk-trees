@@ -18,11 +18,11 @@ export const SERVICE_PAGES = {
     serviceName: "Tree Removal",
     title: "Tree Removal in Houston and Southeast Texas",
     description:
-      "Professional tree removal for dead, damaged, fallen, unwanted, or potentially hazardous trees in Houston and Southeast Texas.",
+      "Professional tree removal for standing dead, damaged, unwanted, or potentially hazardous trees in Houston and Southeast Texas.",
     intro:
-      "Tree removal can be appropriate when a tree is badly damaged, has failed, interferes with safe property use, or cannot reasonably remain where it is. Bukowski Tree Company reviews the visible concern, access, nearby structures, and the requested cleanup scope before recommendations and pricing are finalized.",
+      "Planned tree removal can be appropriate when a standing tree is badly damaged, unwanted, interferes with safe property use, or cannot reasonably remain where it is. Bukowski Tree Company reviews the visible concern, access, nearby structures, and the requested cleanup scope before recommendations and pricing are finalized. If the tree has already come down, review fallen tree removal instead.",
     situations: [
-      "A tree has fallen or partially failed after a storm.",
+      "A standing tree is dead, badly damaged, unwanted, or potentially hazardous.",
       "A tree is leaning toward a home, driveway, fence, or frequently used area.",
       "Large sections are dead, broken, or visibly unstable.",
       "A tree is interfering with planned property use or safe access.",
@@ -40,10 +40,10 @@ export const SERVICE_PAGES = {
       "For an actively falling tree, electrical hazard, or immediate life-safety concern, stay clear of the area and contact the appropriate emergency or utility provider when necessary.",
     ],
     related: [
+      { label: "Fallen Tree Removal", href: "/fallen-tree-removal" },
       { label: "Emergency Tree Service", href: "/emergency-tree-service" },
       { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
       { label: "Storm Cleanup", href: "/storm-cleanup" },
-      { label: "Stump Grinding", href: "/stump-grinding" },
     ],
   },
   "emergency-tree-service": {
@@ -73,9 +73,43 @@ export const SERVICE_PAGES = {
       "Online descriptions cannot determine whether a tree is safe. When in doubt, keep people and vehicles away from the affected area.",
     ],
     related: [
-      { label: "Tree Removal", href: "/tree-removal" },
+      { label: "Fallen Tree Removal", href: "/fallen-tree-removal" },
       { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
       { label: "Storm Cleanup", href: "/storm-cleanup" },
+      { label: "Tree Removal", href: "/tree-removal" },
+    ],
+  },
+  "fallen-tree-removal": {
+    slug: "fallen-tree-removal",
+    serviceName: "Fallen Tree Removal",
+    title: "Fallen Tree Removal in Houston and Southeast Texas",
+    description:
+      "Fallen tree removal for trees already down across yards, driveways, fences, structures, and access areas in Houston and Southeast Texas.",
+    intro:
+      "When a tree or major section has already fallen, the immediate concerns may include blocked access, contact with a structure, and heavy material resting across the property. Bukowski Tree Company reviews the visible condition, access, nearby structures, and the requested cleanup scope before recommendations and pricing are finalized. For an urgent or actively dangerous condition, call directly.",
+    situations: [
+      "A tree has fallen across a yard, driveway, entrance, or other access area.",
+      "A fallen tree is resting on or against a home, outbuilding, or other structure.",
+      "A tree or major section has come down across a fence.",
+      "A storm has left a large tree or substantial section on the ground.",
+      "Fallen material is preventing normal use of part of the property.",
+    ],
+    approach: [
+      "Call for an urgent condition, or send a consultation request for planned, nonurgent removal and cleanup.",
+      "Describe what has fallen, where it is resting, whether access or a structure is affected, and any utility concerns visible from a safe area.",
+      "Review access, surrounding property, the amount of material involved, and the agreed removal and cleanup scope.",
+      "Confirm recommendations and pricing after an onsite evaluation when needed, then complete the agreed work with the surrounding property in mind.",
+    ],
+    considerations: [
+      "Fallen trunks and large sections can remain under tension or shift without warning. Keep people, pets, and vehicles clear of the affected area.",
+      "Do not approach a tree contacting utility lines or electrical equipment. Contact the utility provider or emergency services as appropriate for electrical hazards or immediate life-safety concerns.",
+      "Photos or a description from a safe location can help explain the situation, but tree or structural stability cannot be determined remotely.",
+    ],
+    related: [
+      { label: "Emergency Tree Service", href: "/emergency-tree-service" },
+      { label: "Storm Cleanup", href: "/storm-cleanup" },
+      { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
+      { label: "Tree Removal", href: "/tree-removal" },
     ],
   },
   "dangerous-branch-removal": {
@@ -105,6 +139,7 @@ export const SERVICE_PAGES = {
       "Branches near utility lines require additional caution and may require coordination with the utility provider.",
     ],
     related: [
+      { label: "Fallen Tree Removal", href: "/fallen-tree-removal" },
       { label: "Tree Trimming", href: "/tree-trimming" },
       { label: "Emergency Tree Service", href: "/emergency-tree-service" },
       { label: "Tree Removal", href: "/tree-removal" },
@@ -169,6 +204,7 @@ export const SERVICE_PAGES = {
       "Photographing damage from a safe location can be useful for your records, but do not enter an unstable area to obtain photos.",
     ],
     related: [
+      { label: "Fallen Tree Removal", href: "/fallen-tree-removal" },
       { label: "Emergency Tree Service", href: "/emergency-tree-service" },
       { label: "Tree Removal", href: "/tree-removal" },
       { label: "Dangerous Branch Removal", href: "/dangerous-branch-removal" },
@@ -227,6 +263,33 @@ export function pageHead(path: string, title: string, description: string, servi
               url: SITE.url,
               telephone: SITE.phoneE164,
             },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: absoluteUrl("/"),
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: absoluteUrl("/services"),
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: serviceName,
+                item: url,
+              },
+            ],
           }),
         },
       ]

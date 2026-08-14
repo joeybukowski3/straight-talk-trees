@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DangerousBranchRemovalRouteImport } from './routes/dangerous-branch-removal'
 import { Route as EmergencyTreeServiceRouteImport } from './routes/emergency-tree-service'
+import { Route as FallenTreeRemovalRouteImport } from './routes/fallen-tree-removal'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServiceAreasRouteImport } from './routes/service-areas'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -46,6 +47,11 @@ const DangerousBranchRemovalRoute = DangerousBranchRemovalRouteImport.update({
 const EmergencyTreeServiceRoute = EmergencyTreeServiceRouteImport.update({
   id: '/emergency-tree-service',
   path: '/emergency-tree-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FallenTreeRemovalRoute = FallenTreeRemovalRouteImport.update({
+  id: '/fallen-tree-removal',
+  path: '/fallen-tree-removal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
   '/emergency-tree-service': typeof EmergencyTreeServiceRoute
+  '/fallen-tree-removal': typeof FallenTreeRemovalRoute
   '/privacy': typeof PrivacyRoute
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
   '/emergency-tree-service': typeof EmergencyTreeServiceRoute
+  '/fallen-tree-removal': typeof FallenTreeRemovalRoute
   '/privacy': typeof PrivacyRoute
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
   '/emergency-tree-service': typeof EmergencyTreeServiceRoute
+  '/fallen-tree-removal': typeof FallenTreeRemovalRoute
   '/privacy': typeof PrivacyRoute
   '/service-areas': typeof ServiceAreasRoute
   '/services': typeof ServicesRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dangerous-branch-removal'
     | '/emergency-tree-service'
+    | '/fallen-tree-removal'
     | '/privacy'
     | '/service-areas'
     | '/services'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dangerous-branch-removal'
     | '/emergency-tree-service'
+    | '/fallen-tree-removal'
     | '/privacy'
     | '/service-areas'
     | '/services'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dangerous-branch-removal'
     | '/emergency-tree-service'
+    | '/fallen-tree-removal'
     | '/privacy'
     | '/service-areas'
     | '/services'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DangerousBranchRemovalRoute: typeof DangerousBranchRemovalRoute
   EmergencyTreeServiceRoute: typeof EmergencyTreeServiceRoute
+  FallenTreeRemovalRoute: typeof FallenTreeRemovalRoute
   PrivacyRoute: typeof PrivacyRoute
   ServiceAreasRoute: typeof ServiceAreasRoute
   ServicesRoute: typeof ServicesRoute
@@ -234,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/emergency-tree-service'
       fullPath: '/emergency-tree-service'
       preLoaderRoute: typeof EmergencyTreeServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fallen-tree-removal': {
+      id: '/fallen-tree-removal'
+      path: '/fallen-tree-removal'
+      fullPath: '/fallen-tree-removal'
+      preLoaderRoute: typeof FallenTreeRemovalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DangerousBranchRemovalRoute: DangerousBranchRemovalRoute,
   EmergencyTreeServiceRoute: EmergencyTreeServiceRoute,
+  FallenTreeRemovalRoute: FallenTreeRemovalRoute,
   PrivacyRoute: PrivacyRoute,
   ServiceAreasRoute: ServiceAreasRoute,
   ServicesRoute: ServicesRoute,

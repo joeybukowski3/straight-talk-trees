@@ -42,6 +42,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/fallen-tree-removal" className="hover:text-[color:var(--amber-cta)]">
+                  Fallen Tree Removal
+                </Link>
+              </li>
+              <li>
                 <Link to="/emergency-tree-service" className="hover:text-[color:var(--amber-cta)]">
                   Emergency Tree Service
                 </Link>

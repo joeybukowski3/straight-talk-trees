@@ -5,6 +5,7 @@ export const PUBLIC_ROUTES = [
   "/services",
   "/about",
   "/tree-removal",
+  "/fallen-tree-removal",
   "/emergency-tree-service",
   "/dangerous-branch-removal",
   "/tree-trimming",
