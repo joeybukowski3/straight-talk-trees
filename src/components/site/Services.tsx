@@ -13,7 +13,7 @@ const PRIMARY_LINKS: Record<string, string> = {
 const SUPPORTING_LINKS: Record<string, string> = {
   "Tree Trimming and Pruning": "/tree-trimming",
   "Stump Grinding": "/stump-grinding",
-  "Lot and Land Clearing": "/land-clearing",
+  "Land and Lot Clearing": "/land-clearing",
   "Commercial Tree Service": "/commercial-tree-service",
 };
 

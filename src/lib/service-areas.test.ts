@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { DEFAULT_ZIP_GROUP, SERVICE_AREAS, SERVICE_AREA_ZIPS, ZIP_GROUPS } from "./service-areas";
+import {
+  DEFAULT_ZIP_GROUP,
+  LOCAL_FOCUS_NAMES,
+  SERVICE_AREAS,
+  SERVICE_AREA_ZIPS,
+  ZIP_GROUPS,
+} from "./service-areas";
 
 describe("service-area data", () => {
   it("keeps locations alphabetical and uniquely named", () => {
@@ -25,6 +31,14 @@ describe("service-area data", () => {
     expect(
       SERVICE_AREA_ZIPS.filter(({ group }) => group === DEFAULT_ZIP_GROUP).length,
     ).toBeGreaterThan(0);
+  });
+
+  it("keeps every core-area name inside the full directory without reducing extended coverage", () => {
+    const allNames = new Set(SERVICE_AREAS.map(({ name }) => name));
+
+    expect(new Set(LOCAL_FOCUS_NAMES).size).toBe(LOCAL_FOCUS_NAMES.length);
+    expect(LOCAL_FOCUS_NAMES.every((name) => allNames.has(name))).toBe(true);
+    expect(SERVICE_AREAS.length - LOCAL_FOCUS_NAMES.length).toBeGreaterThan(200);
   });
 
   it("retains shared community relationships for ZIP results", () => {

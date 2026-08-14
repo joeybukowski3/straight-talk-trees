@@ -83,7 +83,7 @@ export const SUPPORTING_SERVICES = [
       "Removal of tree limbs, brush, and debris included within the agreed service scope.",
   },
   {
-    title: "Lot and Land Clearing",
+    title: "Land and Lot Clearing",
     description:
       "Tree, brush, and vegetation removal for property access, cleanup, construction preparation, or land management.",
   },

@@ -25,7 +25,7 @@ const SERVICE_LINKS: Record<string, string> = {
   "Storm Cleanup": "/storm-cleanup",
   "Tree Trimming and Pruning": "/tree-trimming",
   "Stump Grinding": "/stump-grinding",
-  "Lot and Land Clearing": "/land-clearing",
+  "Land and Lot Clearing": "/land-clearing",
   "Commercial Tree Service": "/commercial-tree-service",
 };
 
