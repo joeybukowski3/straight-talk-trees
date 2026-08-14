@@ -11,6 +11,8 @@ export const PUBLIC_ROUTES = [
   "/tree-trimming",
   "/storm-cleanup",
   "/stump-grinding",
+  "/commercial-tree-service",
+  "/land-clearing",
   "/service-areas",
   "/contact",
   "/privacy",

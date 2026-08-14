@@ -74,6 +74,16 @@ export function Footer() {
                   Stump Grinding
                 </Link>
               </li>
+              <li>
+                <Link to="/commercial-tree-service" className="hover:text-[color:var(--amber-cta)]">
+                  Commercial Tree Service
+                </Link>
+              </li>
+              <li>
+                <Link to="/land-clearing" className="hover:text-[color:var(--amber-cta)]">
+                  Land and Lot Clearing
+                </Link>
+              </li>
             </ul>
           </nav>
 
