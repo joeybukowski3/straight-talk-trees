@@ -44,7 +44,7 @@ export const PRIMARY_SERVICES = [
       "Call immediately for hanging limbs, fresh breaks, or branches threatening people, structures, vehicles, or utility lines.",
   },
   {
-    title: "Fallen-Tree Removal",
+    title: "Fallen Tree Removal",
     description:
       "Removal of trees that have fallen across yards, driveways, fences, structures, or other areas of the property.",
     urgent:
@@ -128,7 +128,7 @@ export const FAQS = [
   {
     question: "What types of tree work do you handle?",
     answer:
-      "Bukowski Tree Company handles tree removal, dangerous branch and limb removal, fallen-tree removal, emergency tree service, storm cleanup, trimming, stump grinding, debris removal, land clearing, structure clearance, and residential or commercial tree work.",
+      "Bukowski Tree Company handles tree removal, dangerous branch and limb removal, fallen tree removal, emergency tree service, storm cleanup, trimming, stump grinding, debris removal, land clearing, structure clearance, and residential or commercial tree work.",
   },
   {
     question: "Do you provide emergency tree service?",
