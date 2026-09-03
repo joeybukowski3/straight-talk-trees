@@ -1,6 +1,8 @@
 import { Phone } from "lucide-react";
 import { ContactForm } from "./ContactForm";
+import { NowOpenBadge } from "./NowOpenBadge";
 import { TREE_MARK_PATH } from "./TreeMark";
+import { CHARLOTTE_HUB_PATH } from "@/lib/charlotte-market";
 import { SITE, TRUST_CLAIMS } from "@/lib/site-config";
 import { trackConversion } from "@/lib/analytics";
 
@@ -46,12 +48,23 @@ export function Hero() {
             </p>
 
             <h1 className="type-h1 mt-3 max-w-[16ch] text-[color:var(--forest-foreground)] sm:mt-4">
-              {SITE.tagline.replace(/\.$/, "")}
+              The Straightforward Tree Service Company
             </h1>
 
             <p className="type-body-lg mt-4 max-w-xl text-[color:var(--forest-foreground)]/90 sm:mt-5">
               Tree removal, storm cleanup, dangerous limb removal, trimming, and emergency tree
               service throughout South Houston and Southeast Texas.
+            </p>
+
+            <p className="mt-4 inline-flex max-w-xl flex-wrap items-center gap-x-2 gap-y-1.5 rounded-md border border-[color:var(--amber-cta)]/40 bg-[color:var(--amber-cta)]/12 px-3 py-2 text-sm leading-snug text-[color:var(--forest-foreground)]/90">
+              New Branch <NowOpenBadge /> serving{" "}
+              <a
+                href={CHARLOTTE_HUB_PATH}
+                className="font-semibold text-[color:var(--amber-cta)] underline decoration-[color:var(--amber-cta)] underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--amber-cta)]"
+              >
+                Charlotte, NC
+              </a>{" "}
+              and surrounding areas!
             </p>
 
             <p className="type-meta mt-3 max-w-xl text-[color:var(--forest-foreground)]/70 sm:mt-4">

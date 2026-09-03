@@ -17,6 +17,7 @@ const EXPECTED_PUBLIC_ROUTES = [
   "/commercial-tree-service",
   "/land-clearing",
   "/service-areas",
+  "/charlotte-tree-service",
   "/contact",
   "/privacy",
   "/terms",

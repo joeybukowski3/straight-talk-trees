@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CharlotteTreeServiceRouteImport } from './routes/charlotte-tree-service'
 import { Route as CommercialTreeServiceRouteImport } from './routes/commercial-tree-service'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DangerousBranchRemovalRouteImport } from './routes/dangerous-branch-removal'
@@ -34,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharlotteTreeServiceRoute = CharlotteTreeServiceRouteImport.update({
+  id: '/charlotte-tree-service',
+  path: '/charlotte-tree-service',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommercialTreeServiceRoute = CommercialTreeServiceRouteImport.update({
@@ -110,6 +116,7 @@ const TreeTrimmingRoute = TreeTrimmingRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/charlotte-tree-service': typeof CharlotteTreeServiceRoute
   '/commercial-tree-service': typeof CommercialTreeServiceRoute
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/charlotte-tree-service': typeof CharlotteTreeServiceRoute
   '/commercial-tree-service': typeof CommercialTreeServiceRoute
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/charlotte-tree-service': typeof CharlotteTreeServiceRoute
   '/commercial-tree-service': typeof CommercialTreeServiceRoute
   '/contact': typeof ContactRoute
   '/dangerous-branch-removal': typeof DangerousBranchRemovalRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/charlotte-tree-service'
     | '/commercial-tree-service'
     | '/contact'
     | '/dangerous-branch-removal'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/charlotte-tree-service'
     | '/commercial-tree-service'
     | '/contact'
     | '/dangerous-branch-removal'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/charlotte-tree-service'
     | '/commercial-tree-service'
     | '/contact'
     | '/dangerous-branch-removal'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CharlotteTreeServiceRoute: typeof CharlotteTreeServiceRoute
   CommercialTreeServiceRoute: typeof CommercialTreeServiceRoute
   ContactRoute: typeof ContactRoute
   DangerousBranchRemovalRoute: typeof DangerousBranchRemovalRoute
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charlotte-tree-service': {
+      id: '/charlotte-tree-service'
+      path: '/charlotte-tree-service'
+      fullPath: '/charlotte-tree-service'
+      preLoaderRoute: typeof CharlotteTreeServiceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commercial-tree-service': {
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CharlotteTreeServiceRoute: CharlotteTreeServiceRoute,
   CommercialTreeServiceRoute: CommercialTreeServiceRoute,
   ContactRoute: ContactRoute,
   DangerousBranchRemovalRoute: DangerousBranchRemovalRoute,

@@ -25,7 +25,9 @@ export function Footer() {
                 {SITE.phoneDisplay}
               </a>
             </p>
-            <p className="mt-1 text-sm">Serving {SITE.region}</p>
+            <p className="mt-1 text-sm">
+              Serving Houston &amp; Southeast Texas and Charlotte Metro
+            </p>
           </div>
 
           <nav aria-label="Footer services">
@@ -113,6 +115,11 @@ export function Footer() {
                 <Link to="/service-areas" className="hover:text-[color:var(--amber-cta)]">
                   Service Areas
                 </Link>
+              </li>
+              <li>
+                <a href="/charlotte-tree-service" className="hover:text-[color:var(--amber-cta)]">
+                  Charlotte Metro Tree Service
+                </a>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-[color:var(--amber-cta)]">
