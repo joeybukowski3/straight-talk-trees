@@ -1,3 +1,4 @@
+import { NowOpenBadge } from "./NowOpenBadge";
 import { CHARLOTTE_HUB_PATH } from "@/lib/charlotte-market";
 
 export function Markets() {
@@ -29,8 +30,9 @@ export function Markets() {
             </a>
           </article>
           <article className="rounded-md border border-[color:var(--border)] bg-[color:var(--cream)] p-6">
-            <h3 className="font-display text-xl font-semibold text-[color:var(--forest)]">
+            <h3 className="flex flex-wrap items-center gap-2 font-display text-xl font-semibold text-[color:var(--forest)]">
               Charlotte Metro
+              <NowOpenBadge />
             </h3>
             <p className="mt-3 leading-7 text-[color:var(--foreground)]/80">
               Tree removal, emergency calls, trimming, storm cleanup, and land clearing for

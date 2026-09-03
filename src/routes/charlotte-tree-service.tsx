@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { CharlotteHeroBackdrop } from "@/components/site/CharlotteHeroBackdrop";
+import { NowOpenBadge } from "@/components/site/NowOpenBadge";
 import { ContactForm } from "@/components/site/ContactForm";
 import { EmergencyBar } from "@/components/site/EmergencyBar";
 import { Footer } from "@/components/site/Footer";
@@ -138,8 +139,9 @@ function CharlotteTreeServicePage() {
             <Breadcrumbs items={BREADCRUMBS} inverted />
             <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(17.5rem,22.5rem)] lg:gap-12">
               <div className="min-w-0">
-                <p className="type-eyebrow text-[color:var(--amber-cta)]">
+                <p className="flex flex-wrap items-center gap-2 type-eyebrow text-[color:var(--amber-cta)]">
                   Charlotte Metro · Bukowski Tree Company
+                  <NowOpenBadge />
                 </p>
                 <h1 className="type-h1 mt-3 max-w-[16ch] text-[color:var(--forest-foreground)]">
                   Tree Service in Charlotte, NC
