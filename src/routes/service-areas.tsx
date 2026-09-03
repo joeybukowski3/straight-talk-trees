@@ -18,6 +18,7 @@ import {
   SERVICE_AREA_ZIPS,
   ZIP_GROUPS,
 } from "@/lib/service-areas";
+import { CHARLOTTE_COMMUNITIES, CHARLOTTE_HUB_PATH } from "@/lib/charlotte-market";
 import { SITE } from "@/lib/site-config";
 const BREADCRUMBS = [
   { label: "Home", href: "/" },
@@ -147,8 +148,14 @@ function ServiceAreasPage() {
             <p className="mt-4 max-w-3xl text-base leading-7 text-[color:var(--forest-foreground)]/85 sm:text-lg">
               Our core service area is centered on South Houston and southeast Houston, with an
               extended reach of roughly 100 miles for worthwhile projects across the broader Houston
-              and Southeast Texas region.
+              and Southeast Texas region. Charlotte Metro coverage is listed separately below.
             </p>
+            <a
+              href="#charlotte-metro"
+              className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-[color:var(--amber-cta)] underline decoration-current underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Jump to Charlotte Metro
+            </a>
           </div>
         </section>
 
@@ -201,6 +208,51 @@ function ServiceAreasPage() {
                 className="mt-4 inline-flex min-h-11 items-center rounded-md border border-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
               >
                 Search cities and ZIP codes
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="charlotte-metro"
+          className="scroll-mt-24 border-b border-[color:var(--border)] bg-white"
+        >
+          <div className="mx-auto max-w-[1200px] px-4 py-8 sm:py-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--forest)]">
+              Second market
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-[color:var(--forest)] sm:text-3xl">
+              Charlotte Metro
+            </h2>
+            <p className="mt-3 max-w-3xl leading-7 text-[color:var(--foreground)]/80">
+              Bukowski Tree Company also takes tree-service work in Charlotte Metro, including
+              removal, emergency calls, trimming, storm cleanup, and land clearing. Availability
+              depends on the job, property access, travel, and current scheduling.
+            </p>
+            <ul className="mt-5 grid grid-cols-2 gap-x-5 gap-y-2 text-sm sm:grid-cols-3 lg:grid-cols-4">
+              {CHARLOTTE_COMMUNITIES.map((name) => (
+                <li
+                  key={name}
+                  className="border-l-2 border-[color:var(--amber-cta)] pl-2 font-medium"
+                >
+                  {name}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={CHARLOTTE_HUB_PATH}
+                className="inline-flex min-h-11 items-center rounded-md bg-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+              >
+                Charlotte Metro tree service
+              </a>
+              <a
+                href={SITE.phoneHref}
+                onClick={() => trackConversion("phone_service_area_page_click")}
+                className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-[color:var(--forest)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--forest)] focus-visible:ring-offset-2"
+              >
+                <Phone className="h-4 w-4" aria-hidden />
+                Call {SITE.phoneDisplay}
               </a>
             </div>
           </div>

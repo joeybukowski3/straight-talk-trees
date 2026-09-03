@@ -6,6 +6,7 @@ import { TrustBar } from "@/components/site/TrustBar";
 import { Services } from "@/components/site/Services";
 import { WhenToCall } from "@/components/site/WhenToCall";
 import { WhyBukowski } from "@/components/site/WhyBukowski";
+import { Markets } from "@/components/site/Markets";
 import { Process } from "@/components/site/Process";
 import { FAQ } from "@/components/site/FAQ";
 import { FinalCTA } from "@/components/site/FinalCTA";
@@ -106,6 +107,7 @@ function Index() {
         <Services />
         <WhenToCall />
         <WhyBukowski />
+        <Markets />
         <Process />
         <FAQ />
         <FinalCTA />
