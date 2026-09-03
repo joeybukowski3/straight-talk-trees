@@ -27,13 +27,13 @@ const CHARLOTTE_SERVICES = [
     title: "Tree Removal",
     href: "/tree-removal",
     description:
-      "Removal of dead, leaning, storm-damaged, or unwanted trees on Charlotte-area lots, including mature oaks and pines near homes and drives.",
+      "Removal of dead, leaning, storm-damaged, or unwanted trees on Charlotte-area lots, including mature trees near homes and drives.",
   },
   {
     title: "Fallen Tree Removal",
     href: "/fallen-tree-removal",
     description:
-      "Clear trees that have come down across yards, driveways, fences, or access after ice, thunderstorms, or remnant tropical weather.",
+      "Clear trees that have come down across yards, driveways, fences, or access after storms or high wind.",
   },
   {
     title: "Emergency Tree Service",
@@ -57,7 +57,7 @@ const CHARLOTTE_SERVICES = [
     title: "Storm Cleanup",
     href: "/storm-cleanup",
     description:
-      "Cleanup after ice events, summer storms, and wind damage, including broken tops, debris, and trees left unstable in the canopy.",
+      "Cleanup after storms and wind damage, including broken tops, debris, and trees left unstable in the canopy.",
   },
   {
     title: "Stump Grinding",
@@ -80,12 +80,12 @@ const CHARLOTTE_SERVICES = [
 ] as const;
 
 const REASONS_TO_CALL = [
-  "Ice-loaded, split, or freshly broken trees after winter weather",
-  "Hanging limbs after a thunderstorm or high wind",
+  "Split or freshly broken trees after a storm",
+  "Hanging limbs after a storm or high wind",
   "A tree leaning toward a home, fence, or driveway after saturated ground",
   "A fallen tree blocking a driveway, sidewalk, or other access",
   "Limbs touching or hanging over a roof",
-  "Dead, thinning, or visibly unstable sections in a large oak or pine",
+  "Dead, thinning, or visibly unstable sections in a mature tree",
   "Lot or land clearing before construction or a change in property use",
 ] as const;
 
@@ -189,11 +189,10 @@ function CharlotteTreeServicePage() {
               Tree work for Charlotte Metro properties
             </h2>
             <p className="type-body mt-4 max-w-3xl text-[color:var(--foreground)]/85">
-              Charlotte-area properties deal with mature street trees, ice and thunderstorm damage,
-              clay soils that shift after heavy rain, and ongoing lot clearing in growing suburbs.
-              Bukowski Tree Company handles the urgent conditions and the planned work — then
-              recommends a scope based on what is visible, how the property is accessed, and an
-              onsite review when needed.
+              Charlotte-area properties deal with mature trees, storm and wind damage, saturated
+              ground, and lot clearing tied to growth and development. Bukowski Tree Company handles
+              the urgent conditions and the planned work — then recommends a scope based on what is
+              visible, how the property is accessed, and an onsite review when needed.
             </p>
           </div>
         </section>
@@ -202,8 +201,9 @@ function CharlotteTreeServicePage() {
           <div className="section-shell section-pad">
             <h2 className="type-h2 text-[color:var(--forest)]">Charlotte tree services</h2>
             <p className="type-body mt-4 max-w-3xl text-[color:var(--foreground)]/85">
-              These are the high-intent services customers search for in Charlotte. Each page
-              explains the work in more detail. Call for anything that looks unstable or dangerous.
+              These are the tree services available for Charlotte-area properties. The linked
+              service pages explain the work and what to expect in more detail. Call for anything
+              that looks unstable or dangerous.
             </p>
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {CHARLOTTE_SERVICES.map((service) => (
